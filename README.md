@@ -20,7 +20,7 @@
 
 <div align="center">
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Clebio2030&show_icons=true&theme=radical&include_all_commits=true&count_private=true&locale=pt-br"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&langs_count=10&theme=radical&locale=pt-br&include_all_commits=true&count_private=true&hide=jupyter%20notebook"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&langs_count=7&theme=radical&locale=pt-br&count_private=true"/>
 </div>
 
 <div align="center">
@@ -51,18 +51,6 @@
 
 <div align="center">
   <img src="https://activity-graph.herokuapp.com/graph?username=Clebio2030&theme=react-dark&hide_border=true" width="100%"/>
-</div>
-
-## 🛠️ Linguagens e Ferramentas dos Repositórios
-
-<div align="center">
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=donut&theme=radical&langs_count=8&locale=pt-br&hide_border=true&include_all_commits=true&count_private=true"/>
-  </a>
-  
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img src="https://github-readme-stats.vercel.app/api/wakatime?username=Clebio2030&layout=compact&theme=radical&langs_count=10&locale=pt-br&hide_border=true"/>
-  </a>
 </div>
 
 ## 📫 Como Me Encontrar
