@@ -15,18 +15,18 @@
 ## 📊 Estatísticas do GitHub
 
 <div align="center">
-  <img height="180em" src="https://github-readme-streak-stats-k26wzzdid-clebio2030s-projects.vercel.app/?user=Clebio2030&theme=dark&locale=pt-br&background=000000&border=ffffff&stroke=ffffff&ring=ffffff&fire=ffffff&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=ffffff&sideLabels=ffffff&dates=ffffff&count_private=true"/>
+  <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Clebio2030&theme=radical&locale=pt-br"/>
 </div>
 
 <br>
 
 <div align="center">
-  <img height="180em" src="https://github-readme-stats-two-gamma-34.vercel.app/api?username=Clebio2030&show_icons=true&theme=dark&bg_color=000000&text_color=ffffff&title_color=ffffff&icon_color=ffffff&include_all_commits=true&count_private=true&locale=pt-br"/>
-  <img height="180em" src="https://github-readme-stats-two-gamma-34.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&langs_count=7&theme=dark&bg_color=000000&text_color=ffffff&title_color=ffffff&include_all_commits=true&count_private=true&locale=pt-br"/>
+  <img height="180em" src="https://github-readme-stats-two-gamma-34.vercel.app/api?username=Clebio2030&show_icons=true&theme=radical&include_all_commits=true&count_private=true&locale=pt-br"/>
+  <img height="180em" src="https://github-readme-stats-two-gamma-34.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&langs_count=7&theme=radical&locale=pt-br&count_private=true"/>
 </div>
 
 <div align="center">
-  <img src="hthttps://github-readme-stats-two-gamma-34.vercel.app/?username=Clebio2030&theme=onestar&row=1&column=6&margin-w=15&no-frame=true"/>
+  <img src="https://github-profile-trophy.vercel.app/?username=Clebio2030&theme=radical&row=1&column=6&margin-w=15"/>
 </div>
 
 ## 💻 Tecnologias e Ferramentas
