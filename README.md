@@ -1,19 +1,18 @@
-# 👋 Olá, eu sou [Seu Nome]
+# 👋 Olá, eu sou Clebio
 
 <div align="center">
   
 ![Seguidores](https://img.shields.io/github/followers/Clebio2030?style=social)
 ![Estrelas](https://img.shields.io/github/stars/Clebio2030?style=social)
-[![Twitter](https://img.shields.io/twitter/follow/Clebio2030?style=social)](https://twitter.com/Clebio2030)
 
 <br>
 <img src="https://via.placeholder.com/150" alt="Foto de Perfil" width="200" height="200" style="border-radius:50%;">
 <br>
 <br>
 
-**Desenvolvedor apaixonado por criar soluções inovadoras e impactantes.**
+**Indie Hacker apaixonado por tecnologias e criar pequenas soluções inovadoras.**
 
-[💼 LinkedIn](https://linkedin.com/in/Clebio2030) | [🐦 Twitter](https://twitter.com/Clebio2030) | [📧 Email](mailto:email@exemplo.com) | [🌐 Site Pessoal](https://seusite.com)
+[💼 LinkedIn](https://www.linkedin.com/in/clebiosilva/) | [📧 Email](mailto:clebiodasilva285@gmail.com) 
 
 </div>
 
@@ -21,7 +20,7 @@
 
 <div align="center">
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Clebio2030&show_icons=true&theme=radical&include_all_commits=true&count_private=true&locale=pt-br"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&langs_count=7&theme=radical&locale=pt-br"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&langs_count=10&theme=radical&locale=pt-br&include_all_commits=true&count_private=true&hide=jupyter%20notebook"/>
 </div>
 
 <div align="center">
@@ -54,33 +53,24 @@
   <img src="https://activity-graph.herokuapp.com/graph?username=Clebio2030&theme=react-dark&hide_border=true" width="100%"/>
 </div>
 
-## 👨‍💻 Principais Projetos
+## 🛠️ Linguagens e Ferramentas dos Repositórios
 
 <div align="center">
-  <a href="https://github.com/Clebio2030/projeto1">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Clebio2030&repo=projeto1&theme=radical&locale=pt-br" />
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=donut&theme=radical&langs_count=8&locale=pt-br&hide_border=true&include_all_commits=true&count_private=true"/>
   </a>
-  <a href="https://github.com/Clebio2030/projeto2">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Clebio2030&repo=projeto2&theme=radical&locale=pt-br" />
+  
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img src="https://github-readme-stats.vercel.app/api/wakatime?username=Clebio2030&layout=compact&theme=radical&langs_count=10&locale=pt-br&hide_border=true"/>
   </a>
 </div>
-
-## 🌱 Atualmente Estou Aprendendo
-
-- Framework X
-- Linguagem Y
-- Tecnologia Z
 
 ## 📫 Como Me Encontrar
 
 <div align="center">
   
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/Clebio2030)
-[![Twitter](https://img.shields.io/badge/-Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/Clebio2030)
-[![Instagram](https://img.shields.io/badge/-Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/Clebio2030)
-[![YouTube](https://img.shields.io/badge/-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/c/Clebio2030)
-[![Dev.to](https://img.shields.io/badge/-Dev.to-0A0A0A?style=for-the-badge&logo=dev.to&logoColor=white)](https://dev.to/Clebio2030)
-
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/clebiosilva/)
+[![Instagram](https://img.shields.io/badge/-Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/Clebioz)
 </div>
 
 ## 🔍 Visitantes
@@ -88,11 +78,3 @@
 <div align="center">
   <img src="https://profile-counter.glitch.me/Clebio2030/count.svg" />
 </div>
-
----
-
-<div align="center">
-  
-⭐ **"O código é como poesia - deve ser bonito, elegante e eficiente."** ⭐
-
-</div> 
