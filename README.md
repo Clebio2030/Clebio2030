@@ -15,7 +15,7 @@
 ## 📊 Estatísticas do GitHub
 
 <div align="center">
-  <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Clebio2030&theme=dark&locale=pt-br&background=000000&border=ffffff&stroke=ffffff&ring=ffffff&fire=ffffff&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=ffffff&sideLabels=ffffff&dates=ffffff"/>
+  <img height="180em" src="https://github-readme-streak-stats-k26wzzdid-clebio2030s-projects.vercel.app/?user=Clebio2030&theme=dark&locale=pt-br&background=000000&border=ffffff&stroke=ffffff&ring=ffffff&fire=ffffff&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=ffffff&sideLabels=ffffff&dates=ffffff&count_private=true"/>
 </div>
 
 <br>
@@ -26,7 +26,7 @@
 </div>
 
 <div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Clebio2030&theme=onestar&row=1&column=6&margin-w=15&no-frame=true"/>
+  <img src="hthttps://github-readme-stats-two-gamma-34.vercel.app/?username=Clebio2030&theme=onestar&row=1&column=6&margin-w=15&no-frame=true"/>
 </div>
 
 ## 💻 Tecnologias e Ferramentas
