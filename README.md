@@ -15,7 +15,7 @@
 ## 📊 Estatísticas do GitHub
 
 <div align="center">
-  [![GitHub Streak](https://streak-stats.demolab.com?user=Clebio2030&theme=dark&locale=pt_BR&mode=weekly)](https://git.io/streak-stats)
+  <a href="https://git.io/streak-stats"><img src="https://streak-stats.demolab.com?user=Clebio2030&theme=dark&locale=pt_BR&mode=weekly" alt="GitHub Streak" /></a>
 </div>
 
 <br>
