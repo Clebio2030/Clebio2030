@@ -15,7 +15,7 @@
 ## 📊 Estatísticas do GitHub
 
 <div align="center">
-  <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Clebio2030&theme=highcontrast&locale=pt-br&count_private=true"/>
+  [![GitHub Streak](https://streak-stats.demolab.com?user=Clebio2030&theme=dark&locale=pt_BR&mode=weekly)](https://git.io/streak-stats)
 </div>
 
 <br>
