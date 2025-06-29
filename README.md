@@ -15,7 +15,7 @@
 ## 📊 Estatísticas do GitHub
 
 <div align="center">
-  <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Clebio2030&theme=radical&locale=pt-br"/>
+  <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Clebio2030&theme=highcontrast&locale=pt-br&count_private=true"/>
 </div>
 
 <br>
@@ -26,7 +26,7 @@
 </div>
 
 <div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Clebio2030&theme=radical&row=1&column=6&margin-w=15"/>
+  <img src="https://github-profile-trophy.vercel.app/?username=Clebio2030&theme=radical&row=1&column=6&margin-w=15&count_private=true"/>
 </div>
 
 ## 💻 Tecnologias e Ferramentas
