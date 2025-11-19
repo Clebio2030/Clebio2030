@@ -46,6 +46,10 @@
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
 </div>
 
@@ -53,6 +57,18 @@
 
 <div align="center">
   <img src="https://activity-graph.herokuapp.com/graph?username=Clebio2030&theme=react-dark&hide_border=true" width="100%"/>
+</div>
+
+
+## 🎧 Ouvindo no Spotify
+
+<!-- spotify_readme_start -->
+<!-- spotify_readme_end -->
+
+## 🐍 Minhas Contribuições (Snake Game)
+
+<div align="center">
+  <img src="https://github.com/Clebio2030/Clebio2030/raw/output/github-contribution-grid-snake-dark.svg" alt="Snake animation" />
 </div>
 
 ## 📫 Como Me Encontrar
