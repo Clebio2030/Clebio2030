@@ -4,3 +4,4 @@ __pycache__/
 .DS_Store
 .vscode/
 get_spotify_token.py
+update_spotify.py

@@ -145,6 +145,45 @@ def generate_spotify_card(track, is_playing):
 """
     return svg.strip()
 
+def generate_recent_track_card(track, index):
+    """Gera um card compacto para cada música recente"""
+    artist = track["artists"][0]["name"]
+    song = track["name"]
+    image = track["album"]["images"][-1]["url"]  # Menor imagem
+    
+    # Escapar caracteres XML
+    song = song.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    artist = artist.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    
+    # Base64 da imagem
+    try:
+        img_content = requests.get(image).content
+        img_b64 = base64.b64encode(img_content).decode()
+        img_src = f"data:image/jpeg;base64,{img_b64}"
+    except:
+        img_src = image
+    
+    svg = f"""
+<svg width="190" height="60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <rect x="0" y="0" width="190" height="60" rx="8" fill="#181818" stroke="#282828" stroke-width="1"/>
+    
+    <!-- Album Art -->
+    <defs>
+        <clipPath id="clip{index}">
+            <rect x="8" y="8" width="44" height="44" rx="4" />
+        </clipPath>
+    </defs>
+    <image x="8" y="8" width="44" height="44" xlink:href="{img_src}" clip-path="url(#clip{index})" />
+
+    <!-- Text Info -->
+    <g transform="translate(60, 22)">
+        <text x="0" y="0" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="12" font-weight="bold" fill="#FFFFFF">{song[:18] + ('...' if len(song)>18 else '')}</text>
+        <text x="0" y="18" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="10" fill="#B3B3B3">{artist[:20] + ('...' if len(artist)>20 else '')}</text>
+    </g>
+</svg>
+"""
+    return svg.strip()
+
 def update_readme(current_track, is_playing, recent_tracks):
     if not current_track:
         return
@@ -155,24 +194,39 @@ def update_readme(current_track, is_playing, recent_tracks):
         with open("spotify_card.svg", "w", encoding="utf-8") as f:
             f.write(svg_content)
 
-    # 2. Criar lista markdown das últimas ouvidas (apenas texto, compatível com GitHub)
+    # 2. Gerar SVGs para cada música recente
     recent_html = ""
     if recent_tracks:
-        recent_items = []
+        recent_cards = []
         for i, track in enumerate(recent_tracks[:4], 1):
-            song = track["name"]
-            artist = track["artists"][0]["name"]
-            url = track["external_urls"]["spotify"]
+            # Salvar SVG de cada track
+            track_svg = generate_recent_track_card(track, i)
+            filename = f"recent_{i}.svg"
+            with open(filename, "w", encoding="utf-8") as f:
+                f.write(track_svg)
             
-            recent_items.append(f"{i}. 🎵 [{song}]({url}) - *{artist}*")
+            # Criar link para o card
+            url = track["external_urls"]["spotify"]
+            recent_cards.append(f'<a href="{url}"><img src="https://github.com/Clebio2030/Clebio2030/blob/main/{filename}" alt="Track {i}" width="190"></a>')
         
+        # Criar grid 2x2
         recent_html = f"""
 
 <details>
 <summary>📼 Últimas Ouvidas</summary>
-
-{chr(10).join(recent_items)}
-
+<br>
+<div align="center">
+  <table>
+    <tr>
+      <td>{recent_cards[0] if len(recent_cards) > 0 else ''}</td>
+      <td>{recent_cards[1] if len(recent_cards) > 1 else ''}</td>
+    </tr>
+    <tr>
+      <td>{recent_cards[2] if len(recent_cards) > 2 else ''}</td>
+      <td>{recent_cards[3] if len(recent_cards) > 3 else ''}</td>
+    </tr>
+  </table>
+</div>
 </details>
 """
 

@@ -60,12 +60,19 @@
 
 <details>
 <summary>📼 Últimas Ouvidas</summary>
-
-1. 🎵 [Hotter Than Hell](https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u) - *Dua Lipa*
-2. 🎵 [One Dance](https://open.spotify.com/track/1zi7xx7UVEFkmKfv06H8x0) - *Drake*
-3. 🎵 [I Feel It Coming](https://open.spotify.com/track/5GXAXm5YOmYT0kL5jHvYBt) - *The Weeknd*
-4. 🎵 [Something Just Like This](https://open.spotify.com/track/6RUKPb4LETWmmr3iAEQktW) - *The Chainsmokers*
-
+<br>
+<div align="center">
+  <table>
+    <tr>
+      <td><a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u"><img src="https://github.com/Clebio2030/Clebio2030/blob/main/recent_1.svg" alt="Track 1" width="190"></a></td>
+      <td><a href="https://open.spotify.com/track/1zi7xx7UVEFkmKfv06H8x0"><img src="https://github.com/Clebio2030/Clebio2030/blob/main/recent_2.svg" alt="Track 2" width="190"></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://open.spotify.com/track/5GXAXm5YOmYT0kL5jHvYBt"><img src="https://github.com/Clebio2030/Clebio2030/blob/main/recent_3.svg" alt="Track 3" width="190"></a></td>
+      <td><a href="https://open.spotify.com/track/6RUKPb4LETWmmr3iAEQktW"><img src="https://github.com/Clebio2030/Clebio2030/blob/main/recent_4.svg" alt="Track 4" width="190"></a></td>
+    </tr>
+  </table>
+</div>
 </details>
 
 </div>

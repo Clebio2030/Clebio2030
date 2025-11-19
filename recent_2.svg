@@ -1,0 +1,17 @@
+<svg width="190" height="60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <rect x="0" y="0" width="190" height="60" rx="8" fill="#181818" stroke="#282828" stroke-width="1"/>
+    
+    <!-- Album Art -->
+    <defs>
+        <clipPath id="clip2">
+            <rect x="8" y="8" width="44" height="44" rx="4" />
+        </clipPath>
+    </defs>
+    <image x="8" y="8" width="44" height="44" xlink:href="data:image/jpeg;base64,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" clip-path="url(#clip2)" />
+
+    <!-- Text Info -->
+    <g transform="translate(60, 22)">
+        <text x="0" y="0" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="12" font-weight="bold" fill="#FFFFFF">One Dance</text>
+        <text x="0" y="18" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="10" fill="#B3B3B3">Drake</text>
+    </g>
+</svg>
