@@ -60,5 +60,5 @@
 ## 🔍 Visitantes
 
 <div align="center">
-  <img src="https://profile-counter.glitch.me/Clebio2030/count.svg" />
+  <img src="https://komarev.com/ghpvc/?username=Clebio2030&style=flat-square&color=blue" alt="Visitantes" />
 </div>
