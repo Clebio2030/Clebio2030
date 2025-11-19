@@ -56,12 +56,24 @@ def update_readme(track, is_playing):
     new_content = f"""
 <!-- spotify_readme_start -->
 <div align="center">
-  <h3>{status_text}</h3>
-  <a href="{url}">
-    <img src="{image}" width="250" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);" alt="{song}">
-  </a>
-  <br/>
-  <p><b>{song}</b> - {artist}</p>
+  <table align="center" style="border: none;">
+    <tr>
+      <td width="120" align="center">
+        <a href="{url}">
+          <img src="{image}" width="100%" style="border-radius: 12px;" alt="Album Cover">
+        </a>
+      </td>
+      <td style="padding-left: 20px;">
+        <p style="color: #1DB954; font-weight: bold; margin-bottom: 5px;">{status_text}</p>
+        <p style="font-size: 16px; font-weight: bold; margin: 0;"><a href="{url}" style="text-decoration: none; color: inherit;">{song}</a></p>
+        <p style="font-size: 14px; margin: 0; color: #888;">{artist}</p>
+        <br/>
+        <a href="https://open.spotify.com/user/clebio2030">
+            <img src="https://img.shields.io/badge/Spotify-1ED760?style=for-the-badge&logo=spotify&logoColor=white" alt="Spotify Profile">
+        </a>
+      </td>
+    </tr>
+  </table>
 </div>
 <!-- spotify_readme_end -->
 """
