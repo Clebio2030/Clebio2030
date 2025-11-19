@@ -56,6 +56,46 @@
   <a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
     <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="100%">
   </a>
+  
+<details>
+<summary style="cursor: pointer; font-size: 14px; color: #1DB954; margin-top: 10px;">📼 Últimas Ouvidas</summary>
+<div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+  
+    <a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u" style="text-decoration: none; color: inherit;">
+      <img src="https://i.scdn.co/image/ab67616d00004851838698485511bd9108fadadc" width="50" height="50" style="border-radius: 4px; vertical-align: middle;" alt="Hotter Than Hell">
+      <span style="margin-left: 8px; font-size: 13px;">
+        <strong>Hotter Than Hell</strong><br>
+        <span style="color: #888;">Dua Lipa</span>
+      </span>
+    </a>
+
+    <a href="https://open.spotify.com/track/1zi7xx7UVEFkmKfv06H8x0" style="text-decoration: none; color: inherit;">
+      <img src="https://i.scdn.co/image/ab67616d000048519416ed64daf84936d89e671c" width="50" height="50" style="border-radius: 4px; vertical-align: middle;" alt="One Dance">
+      <span style="margin-left: 8px; font-size: 13px;">
+        <strong>One Dance</strong><br>
+        <span style="color: #888;">Drake</span>
+      </span>
+    </a>
+
+    <a href="https://open.spotify.com/track/5GXAXm5YOmYT0kL5jHvYBt" style="text-decoration: none; color: inherit;">
+      <img src="https://i.scdn.co/image/ab67616d00004851a048415db06a5b6fa7ec4e1a" width="50" height="50" style="border-radius: 4px; vertical-align: middle;" alt="I Feel It Coming">
+      <span style="margin-left: 8px; font-size: 13px;">
+        <strong>I Feel It Coming</strong><br>
+        <span style="color: #888;">The Weeknd</span>
+      </span>
+    </a>
+
+    <a href="https://open.spotify.com/track/6RUKPb4LETWmmr3iAEQktW" style="text-decoration: none; color: inherit;">
+      <img src="https://i.scdn.co/image/ab67616d000048510c13d3d5a503c84fcc60ae94" width="50" height="50" style="border-radius: 4px; vertical-align: middle;" alt="Something Just Like This">
+      <span style="margin-left: 8px; font-size: 13px;">
+        <strong>Something Just Like This</strong><br>
+        <span style="color: #888;">The Chainsmokers</span>
+      </span>
+    </a>
+
+</div>
+</details>
+
 </div>
 <!-- spotify_readme_end -->
 
