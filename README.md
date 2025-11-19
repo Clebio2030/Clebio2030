@@ -15,8 +15,8 @@
 ## 📊 Estatísticas do GitHub
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Clebio2030&show_icons=true&theme=radical&include_all_commits=true&count_private=true&locale=pt-br&hide_border=true" alt="Estatísticas do GitHub" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&langs_count=7&theme=radical&locale=pt-br&count_private=true&hide_border=true" alt="Linguagens Mais Usadas" />
+  <img src="https://github-readme-stats.vercel.app/api?username=Clebio2030&show_icons=true&theme=radical&include_all_commits=true&locale=pt-br&hide_border=true" alt="Estatísticas do GitHub" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&langs_count=7&theme=radical&locale=pt-br&hide_border=true" alt="Linguagens Mais Usadas" />
 </div>
 
 
@@ -53,25 +53,9 @@
 
 <!-- spotify_readme_start -->
 <div align="center">
-  <table align="center" style="border: none;">
-    <tr>
-      <td width="120" align="center">
-        <a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
-          <img src="https://i.scdn.co/image/ab67616d0000b273838698485511bd9108fadadc" width="100%" style="border-radius: 12px;" alt="Album Cover">
-        </a>
-      </td>
-      <td style="padding-left: 20px;">
-        <p style="color: #1DB954; font-weight: bold; margin-bottom: 5px;">⏮️ Última ouvida:</p>
-        <p style="font-size: 16px; font-weight: bold; margin: 0;"><a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u" style="text-decoration: none; color: inherit;">Hotter Than Hell</a></p>
-        <p style="font-size: 14px; margin: 0; color: #888;">Dua Lipa</p>
-        <br/>
-        <p style="font-size: 20px; margin: 0;">⏮️ &nbsp; ▶️ &nbsp; ⏭️</p>
-        <p style="font-family: monospace; font-size: 12px; margin: 0; color: #888;">
-          ───⚪──────────
-        </p>
-      </td>
-    </tr>
-  </table>
+  <a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
+    <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="100%">
+  </a>
 </div>
 <!-- spotify_readme_end -->
 
