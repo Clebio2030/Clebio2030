@@ -23,6 +23,7 @@ jobs:
           config_output: svg
           filename: github-metrics.svg
           config_twemoji: yes
+          config_padding: 0, 8 + 11%
           
           # Idioma português
           config_locale: pt-br
@@ -31,15 +32,6 @@ jobs:
           repositories: 300
           repositories_forks: yes
           repositories_affiliations: owner, collaborator, organization_member
-          
-          # Plugin de atividade
-          plugin_activity: yes
-          plugin_activity_days: 30
-          plugin_activity_filter: all
-          plugin_activity_limit: 5
-          plugin_activity_load: 300
-          plugin_activity_visibility: all
-          plugin_activity_timestamps: yes
           
           # Plugin de linguagens mais usadas
           plugin_languages: yes
@@ -54,21 +46,15 @@ jobs:
           plugin_languages_threshold: 0%
           plugin_languages_details: bytes-size, percentage
           
-          # Plugin de habits (padrões de commit)
-          plugin_habits: yes
-          plugin_habits_charts_type: classic
-          plugin_habits_days: 30
-          plugin_habits_facts: yes
-          plugin_habits_from: 300
-          plugin_habits_languages_limit: 8
-          plugin_habits_languages_threshold: 0%
+          # Plugin de isocalendar (mapa de commits)
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
           
-          # Plugin de traffic (visitantes)
-          plugin_traffic: yes
-          
-          # Desabilitar seções que você não quer
-          base_indepth: no
-          plugin_lines: no
+          # Desabilitar plugins com erro
+          plugin_activity: no
+          plugin_habits: no
           plugin_notable: no
+          plugin_lines: no
           plugin_achievements: no
           plugin_calendar: no
+          plugin_traffic: no
