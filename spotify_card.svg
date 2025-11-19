@@ -31,7 +31,4 @@
         <rect class="bar bar5" x="24" y="0" width="3" height="6" fill="#535353" rx="1" />
     </g>
     
-    
-    <!-- Spotify Logo -->
-    <image x="365" y="15" width="20" height="20" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClDwvFAAAAG1BMVEUAAAD///8AZv8Aqv8AlP8Aqv8AgP8Anf8Amf9r0JECAAAACHRSTlMA///w///w//8A9wV5AAAAhUlEQVQ4y6XToQ2AMAyF4f+jE3AAlQSwABWjwQIsQJ102S8Bgu/iYsmS9T2frH/qeS9B90eC7o8E3R8Juj8S9PsiQc83CXo/E/T8JOj5S9DzlyR+3tcX2QAAAABJRU5ErkJggg==" />
 </svg>
