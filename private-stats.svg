@@ -37,7 +37,7 @@
             Total de Repositórios
         </text>
         <text x="640" y="75" font-family="'Segoe UI', Ubuntu, sans-serif" font-size="24" font-weight="bold" fill="#7159c1" text-anchor="middle">
-            40
+            0
         </text>
     </g>
     
@@ -45,5 +45,5 @@
     <text x="50" y="110" font-family="'Segoe UI', Ubuntu, sans-serif" font-size="11" fill="#8b949e">
         Atividade (últimos 30 dias)
     </text>
-    <rect x="50" y="125" width="18" height="5" fill="#1DB954" rx="2" /><text x="59.0" y="145" font-size="8" fill="#888" text-anchor="middle">11-18</text><rect x="74" y="125" width="18" height="5" fill="#1DB954" rx="2" /><text x="83.0" y="145" font-size="8" fill="#888" text-anchor="middle">11-19</text>
+    <text x="400" y="130" font-size="10" fill="#888" text-anchor="middle">Buscando dados de atividade recente...</text>
 </svg>
