@@ -2,6 +2,7 @@ import os
 import requests
 from datetime import datetime, timedelta
 from collections import defaultdict
+import time
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 USERNAME = "Clebio2030"
@@ -44,7 +45,6 @@ def get_all_repos():
             break
             
         repos.extend(data)
-        print(f"  Página {page}: {len(data)} repositórios")
         page += 1
         
         if len(data) < 100:
@@ -53,53 +53,66 @@ def get_all_repos():
     return repos
 
 def get_commits_from_repos(repos, days=30):
-    """Busca commits diretamente de cada repositório"""
+    """Busca commits diretamente de cada repositório - VERSÃO OTIMIZADA"""
     headers = {
         "Authorization": f"token {GITHUB_TOKEN}",
         "Accept": "application/vnd.github.v3+json"
     }
     
-    since = (datetime.now() - timedelta(days=days)).isoformat()
+    since = (datetime.now() - timedelta(days=days)).strftime('%Y-%m-%dT%H:%M:%SZ')
     commits_by_day = defaultdict(int)
     total_commits = 0
-    repos_checked = 0
+    repos_with_commits = 0
     
-    for repo in repos:
+    print(f"📊 Buscando commits desde {since[:10]}...")
+    
+    for i, repo in enumerate(repos, 1):
         repo_name = repo['full_name']
-        repos_checked += 1
         
-        # Buscar commits do autor
-        url = f"https://api.github.com/repos/{repo_name}/commits?author={USERNAME}&since={since}&per_page=100"
+        # Buscar commits do autor usando SHA para verificar se há commits
+        url = f"https://api.github.com/repos/{repo_name}/commits?author={USERNAME}&since={since}&per_page=1"
         
         try:
-            response = requests.get(url, headers=headers)
+            response = requests.get(url, headers=headers, timeout=5)
             
             if response.status_code == 200:
                 commits = response.json()
-                repo_commits = len(commits)
-                total_commits += repo_commits
                 
-                for commit in commits:
-                    date = commit['commit']['author']['date'][:10]
-                    commits_by_day[date] += 1
-                
-                if repo_commits > 0:
-                    print(f"  ✓ {repo_name}: {repo_commits} commits")
+                if commits:  # Se tem pelo menos 1 commit, buscar todos
+                    url_all = f"https://api.github.com/repos/{repo_name}/commits?author={USERNAME}&since={since}&per_page=100"
+                    response_all = requests.get(url_all, headers=headers, timeout=10)
+                    
+                    if response_all.status_code == 200:
+                        all_commits = response_all.json()
+                        repo_commits = len(all_commits)
+                        total_commits += repo_commits
+                        repos_with_commits += 1
+                        
+                        for commit in all_commits:
+                            date = commit['commit']['author']['date'][:10]
+                            commits_by_day[date] += 1
+                        
+                        if repo_commits > 0:
+                            print(f"  ✓ [{i}/{len(repos)}] {repo_name}: {repo_commits} commits")
+                            
             elif response.status_code == 409:  # Empty repository
                 continue
-            elif response.status_code == 404:  # Repository not found or no access
+            elif response.status_code == 404:  # No access
                 continue
-            else:
-                print(f"  ⚠ {repo_name}: Erro {response.status_code}")
                 
+        except requests.Timeout:
+            print(f"  ⚠ [{i}/{len(repos)}] {repo_name}: Timeout")
+            continue
         except Exception as e:
-            print(f"  ⚠ Erro ao processar {repo_name}: {e}")
+            print(f"  ⚠ [{i}/{len(repos)}] {repo_name}: {str(e)[:50]}")
             continue
         
-        # Limitar para não exceder rate limit
-        if repos_checked % 10 == 0:
-            print(f"  Processados {repos_checked}/{len(repos)} repositórios...")
+        # Pequeno delay para não exceder rate limit
+        if i % 10 == 0:
+            print(f"  📈 Progresso: {i}/{len(repos)} repositórios processados... ({repos_with_commits} com commits)")
+            time.sleep(0.5)
     
+    print(f"\n✓ Processamento completo: {repos_with_commits} repositórios com commits")
     return total_commits, commits_by_day
 
 def generate_stats_svg(stats_7days, stats_30days, commits_by_day, total_repos):
@@ -197,9 +210,9 @@ if __name__ == "__main__":
         if repos:
             print(f"  Exemplos: {', '.join([r['name'] for r in repos[:3]])}")
         
-        print(f"\n📊 Buscando commits dos últimos 30 dias em {len(repos)} repositórios...")
+        print(f"\n📊 Buscando commits dos últimos 30 dias...")
         stats_30days, commits_by_day = get_commits_from_repos(repos, days=30)
-        print(f"✓ Total de commits encontrados: {stats_30days}")
+        print(f"\n✓ Total de commits encontrados: {stats_30days}")
         
         last_7_days = sorted(commits_by_day.keys())[-7:] if commits_by_day else []
         stats_7days = sum(commits_by_day[day] for day in last_7_days)
