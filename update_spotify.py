@@ -51,6 +51,7 @@ def update_readme(track, is_playing):
     image = track["album"]["images"][0]["url"]
     
     status_text = "🎶 Ouvindo agora:" if is_playing else "⏮️ Última ouvida:"
+    play_icon = "⏸️" if is_playing else "▶️"
     
     # HTML para inserir no README
     new_content = f"""
@@ -68,9 +69,10 @@ def update_readme(track, is_playing):
         <p style="font-size: 16px; font-weight: bold; margin: 0;"><a href="{url}" style="text-decoration: none; color: inherit;">{song}</a></p>
         <p style="font-size: 14px; margin: 0; color: #888;">{artist}</p>
         <br/>
-        <a href="https://open.spotify.com/user/clebio2030">
-            <img src="https://img.shields.io/badge/Spotify-1ED760?style=for-the-badge&logo=spotify&logoColor=white" alt="Spotify Profile">
-        </a>
+        <p style="font-size: 20px; margin: 0;">⏮️ &nbsp; {play_icon} &nbsp; ⏭️</p>
+        <p style="font-family: monospace; font-size: 12px; margin: 0; color: #888;">
+          ───⚪──────────
+        </p>
       </td>
     </tr>
   </table>
@@ -107,4 +109,3 @@ if __name__ == "__main__":
             print("Erro ao obter token de acesso.")
     except Exception as e:
         print(f"Erro: {e}")
-
