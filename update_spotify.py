@@ -155,46 +155,36 @@ def update_readme(current_track, is_playing, recent_tracks):
         with open("spotify_card.svg", "w", encoding="utf-8") as f:
             f.write(svg_content)
 
-    # 2. Criar HTML das últimas ouvidas
+    # 2. Criar lista markdown das últimas ouvidas (apenas texto, compatível com GitHub)
     recent_html = ""
     if recent_tracks:
         recent_items = []
-        for track in recent_tracks[:4]:
-            song = track["name"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-            artist = track["artists"][0]["name"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+        for i, track in enumerate(recent_tracks[:4], 1):
+            song = track["name"]
+            artist = track["artists"][0]["name"]
             url = track["external_urls"]["spotify"]
-            image = track["album"]["images"][-1]["url"]  # Imagem menor
             
-            recent_items.append(f"""
-    <a href="{url}" style="text-decoration: none; color: inherit;">
-      <img src="{image}" width="50" height="50" style="border-radius: 4px; vertical-align: middle;" alt="{song}">
-      <span style="margin-left: 8px; font-size: 13px;">
-        <strong>{song[:25] + ('...' if len(song)>25 else '')}</strong><br>
-        <span style="color: #888;">{artist[:25]}</span>
-      </span>
-    </a>
-""")
+            recent_items.append(f"{i}. 🎵 [{song}]({url}) - *{artist}*")
         
         recent_html = f"""
+
 <details>
-<summary style="cursor: pointer; font-size: 14px; color: #1DB954; margin-top: 10px;">📼 Últimas Ouvidas</summary>
-<div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-  {''.join(recent_items)}
-</div>
+<summary>📼 Últimas Ouvidas</summary>
+
+{chr(10).join(recent_items)}
+
 </details>
 """
 
     # 3. Atualizar README
-    new_content = f"""
-<!-- spotify_readme_start -->
+    new_content = f"""<!-- spotify_readme_start -->
 <div align="center">
   <a href="{current_track['external_urls']['spotify']}">
     <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="100%">
   </a>
   {recent_html}
 </div>
-<!-- spotify_readme_end -->
-"""
+<!-- spotify_readme_end -->"""
 
     with open("README.md", "r", encoding="utf-8") as f:
         readme = f.read()
