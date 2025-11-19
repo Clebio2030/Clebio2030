@@ -14,11 +14,7 @@
 
 ## 📊 Estatísticas do GitHub
 
-<div align="center">
-  
-![Métricas GitHub](github-metrics.svg)
 
-</div>
 
 ## 💻 Tecnologias e Ferramentas
 
