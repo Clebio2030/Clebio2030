@@ -53,11 +53,6 @@
 
 </div>
 
-## 📈 Contribuições
-
-<div align="center">
-  <img src="https://activity-graph.herokuapp.com/graph?username=Clebio2030&theme=react-dark&hide_border=true" width="100%"/>
-</div>
 
 
 ## 🎧 Ouvindo no Spotify
@@ -73,11 +68,6 @@
 </div>
 <!-- spotify_readme_end -->
 
-## 🐍 Minhas Contribuições (Snake Game)
-
-<div align="center">
-  <img src="https://github.com/Clebio2030/Clebio2030/raw/output/github-contribution-grid-snake-dark.svg" alt="Snake animation" />
-</div>
 
 ## 📫 Como Me Encontrar
 
