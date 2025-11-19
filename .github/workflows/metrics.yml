@@ -38,6 +38,10 @@ jobs:
           # Plugin: Isocalendar (Calendário de contribuições)
           plugin_isocalendar: yes
           plugin_isocalendar_duration: half-year
+
+          # Plugin: Streak (Sequência de contribuições)
+          plugin_streak: yes
+          plugin_streak_mode: weekly
           
           # Plugin: Achievements (Conquistas)
           plugin_achievements: yes
