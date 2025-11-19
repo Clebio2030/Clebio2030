@@ -16,15 +16,8 @@
 
 <div align="center">
   
-![Métricas GitHub](github-metrics.svg)
-
-</div>
-
-### 📈 Atividade Detalhada (Incluindo Repositórios Privados)
-
-<div align="center">
-  
 ![Estatísticas Privadas](private-stats.svg)
+
 
 </div>
 
