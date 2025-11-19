@@ -31,7 +31,7 @@ def get_all_repos():
     page = 1
     
     while True:
-        url = f"https://api.github.com/user/repos?per_page=100&page={page}&visibility=all&affiliation=owner"
+        url = f"https://api.github.com/user/repos?per_page=100&page={page}&visibility=all&affiliation=owner,collaborator,organization_member&type=all"
         response = requests.get(url, headers=headers)
         
         if response.status_code != 200:
@@ -44,6 +44,7 @@ def get_all_repos():
             break
             
         repos.extend(data)
+        print(f"  Página {page}: {len(data)} repositórios")
         page += 1
         
         if len(data) < 100:
@@ -51,53 +52,58 @@ def get_all_repos():
     
     return repos
 
-def get_user_events(username, days=30):
-    """Busca eventos públicos e privados do usuário"""
+def get_commits_from_repos(repos, days=30):
+    """Busca commits diretamente de cada repositório"""
     headers = {
         "Authorization": f"token {GITHUB_TOKEN}",
         "Accept": "application/vnd.github.v3+json"
     }
     
+    since = (datetime.now() - timedelta(days=days)).isoformat()
     commits_by_day = defaultdict(int)
     total_commits = 0
+    repos_checked = 0
     
-    page = 1
-    since = datetime.now() - timedelta(days=days)
-    
-    while page <= 10:
-        url = f"https://api.github.com/users/{username}/events?per_page=100&page={page}"
-        response = requests.get(url, headers=headers)
+    for repo in repos:
+        repo_name = repo['full_name']
+        repos_checked += 1
         
-        if response.status_code != 200:
-            print(f"Erro ao buscar eventos: {response.status_code}")
-            break
+        # Buscar commits do autor
+        url = f"https://api.github.com/repos/{repo_name}/commits?author={USERNAME}&since={since}&per_page=100"
         
-        events = response.json()
-        
-        if not events:
-            break
-        
-        for event in events:
-            event_date = datetime.strptime(event['created_at'], '%Y-%m-%dT%H:%M:%SZ')
+        try:
+            response = requests.get(url, headers=headers)
             
-            if event_date < since:
-                break
-            
-            if event['type'] == 'PushEvent':
-                commits = event['payload'].get('commits', [])
-                date_str = event['created_at'][:10]
-                commits_by_day[date_str] += len(commits)
-                total_commits += len(commits)
+            if response.status_code == 200:
+                commits = response.json()
+                repo_commits = len(commits)
+                total_commits += repo_commits
+                
+                for commit in commits:
+                    date = commit['commit']['author']['date'][:10]
+                    commits_by_day[date] += 1
+                
+                if repo_commits > 0:
+                    print(f"  ✓ {repo_name}: {repo_commits} commits")
+            elif response.status_code == 409:  # Empty repository
+                continue
+            elif response.status_code == 404:  # Repository not found or no access
+                continue
+            else:
+                print(f"  ⚠ {repo_name}: Erro {response.status_code}")
+                
+        except Exception as e:
+            print(f"  ⚠ Erro ao processar {repo_name}: {e}")
+            continue
         
-        if events and datetime.strptime(events[-1]['created_at'], '%Y-%m-%dT%H:%M:%SZ') < since:
-            break
-            
-        page += 1
+        # Limitar para não exceder rate limit
+        if repos_checked % 10 == 0:
+            print(f"  Processados {repos_checked}/{len(repos)} repositórios...")
     
     return total_commits, commits_by_day
 
 def generate_stats_svg(stats_7days, stats_30days, commits_by_day, total_repos):
-    """Gera SVG com estatísticas - AJUSTADO para não sobrescrever"""
+    """Gera SVG com estatísticas"""
     
     last_7_days = sorted(commits_by_day.keys())[-7:] if commits_by_day else []
     commits_last_week = sum(commits_by_day[day] for day in last_7_days)
@@ -108,7 +114,6 @@ def generate_stats_svg(stats_7days, stats_30days, commits_by_day, total_repos):
     
     bars = []
     if all_days:
-        # Ajustar espaçamento para não sobrescrever
         bar_width = 18
         spacing = 24
         for i, day in enumerate(all_days):
@@ -118,7 +123,6 @@ def generate_stats_svg(stats_7days, stats_30days, commits_by_day, total_repos):
             y = 130 - height
             
             bars.append(f'<rect x="{x}" y="{y}" width="{bar_width}" height="{max(height, 5)}" fill="#1DB954" rx="2" />')
-            # Mostrar dia apenas a cada 5 dias para não sobrescrever
             if i % 5 == 0 or i == len(all_days) - 1:
                 bars.append(f'<text x="{x+bar_width/2}" y="145" font-size="8" fill="#888" text-anchor="middle">{day[-5:]}</text>')
     
@@ -193,9 +197,9 @@ if __name__ == "__main__":
         if repos:
             print(f"  Exemplos: {', '.join([r['name'] for r in repos[:3]])}")
         
-        print("\n📊 Buscando atividade recente...")
-        stats_30days, commits_by_day = get_user_events(USERNAME, days=30)
-        print(f"✓ Commits encontrados: {stats_30days}")
+        print(f"\n📊 Buscando commits dos últimos 30 dias em {len(repos)} repositórios...")
+        stats_30days, commits_by_day = get_commits_from_repos(repos, days=30)
+        print(f"✓ Total de commits encontrados: {stats_30days}")
         
         last_7_days = sorted(commits_by_day.keys())[-7:] if commits_by_day else []
         stats_7days = sum(commits_by_day[day] for day in last_7_days)
