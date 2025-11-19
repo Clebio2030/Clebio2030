@@ -2,8 +2,8 @@
 
 <div align="center">
   
-![Followers](https://img.shields.io/github/followers/Clebio2030?style=social)
-![Stars](https://img.shields.io/github/stars/Clebio2030?style=social)
+![Seguidores](https://img.shields.io/github/followers/Clebio2030?style=social)
+![Estrelas](https://img.shields.io/github/stars/Clebio2030?style=social)
 
 
 **🛠️ Na missão de descomplicar rotinas através de SaaS inovadores.**
@@ -13,12 +13,6 @@
 </div>
 
 ## 📊 Estatísticas do GitHub
-
-<div align="center">
-  <a href="https://git.io/streak-stats"><img src="https://streak-stats.demolab.com?user=Clebio2030&theme=dark&locale=pt_BR&mode=weekly" alt="GitHub Streak" /></a>
-</div>
-
-<br>
 
 <div align="center">
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Clebio2030&show_icons=true&theme=radical&include_all_commits=true&count_private=true&locale=pt-br"/>
