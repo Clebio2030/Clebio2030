@@ -53,22 +53,10 @@
 
 <!-- spotify_readme_start -->
 <div align="center">
+  <a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
+    <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="450">
+  </a>
   
-### Variação 1: Moderno com Gradiente
-<a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
-  <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card_v1.svg" alt="Spotify V1" width="480">
-</a>
-
-### Variação 2: Minimalista Elegante
-<a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
-  <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card_v2.svg" alt="Spotify V2" width="500">
-</a>
-
-### Variação 3: Glassmorphism
-<a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
-  <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card_v3.svg" alt="Spotify V3" width="450">
-</a>
-
 
 <p align="center"><strong>Outras Recentes</strong></p>
 

@@ -23,14 +23,12 @@ def get_access_token():
 
 def get_current_track(access_token):
     try:
-        # Tenta pegar o que está tocando agora
         response = requests.get(
             "https://api.spotify.com/v1/me/player/currently-playing",
             headers={"Authorization": f"Bearer {access_token}"},
         )
         
         if response.status_code == 204 or not response.text:
-            # Se não estiver tocando nada, pega a última tocada
             response = requests.get(
                 "https://api.spotify.com/v1/me/player/recently-played?limit=1",
                 headers={"Authorization": f"Bearer {access_token}"},
@@ -64,6 +62,7 @@ def get_recently_played(access_token, limit=4):
         return []
 
 def generate_spotify_card(track, is_playing):
+    """Versão 3: Estilo Glassmorphism"""
     if not track:
         return None
 
@@ -71,77 +70,78 @@ def generate_spotify_card(track, is_playing):
     song = track["name"]
     image = track["album"]["images"][0]["url"]
     
-    # Escapar caracteres XML especiais
     song = song.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     artist = artist.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     
-    # Cor de fundo e texto
-    bg_color = "#121212"
-    text_color = "#FFFFFF"
-    bar_color = "#1DB954" if is_playing else "#535353"
-    
-    # Base64 da imagem para embutir no SVG
     try:
         img_content = requests.get(image).content
         img_b64 = base64.b64encode(img_content).decode()
         img_src = f"data:image/jpeg;base64,{img_b64}"
     except:
-        img_src = image # Fallback
+        img_src = image
 
-    # Animação das barras (CSS)
-    animation_styles = ""
+    glow = ""
     if is_playing:
-        animation_styles = """
+        glow = """
         <style>
-            .bar { animation: bars 1.2s ease-in-out infinite; }
-            @keyframes bars { 0%, 100% { height: 4px; } 50% { height: 14px; } }
-            .bar1 { animation-delay: 0s; }
-            .bar2 { animation-delay: 0.2s; }
-            .bar3 { animation-delay: 0.4s; }
-            .bar4 { animation-delay: 0.6s; }
-            .bar5 { animation-delay: 0.8s; }
+            .glow { animation: glow 2s ease-in-out infinite; }
+            @keyframes glow { 0%, 100% { filter: drop-shadow(0 0 5px #1DB954); } 
+                             50% { filter: drop-shadow(0 0 15px #1DB954); } }
         </style>
         """
-    
-    bars_svg = f"""
-    <g transform="translate(200, 70)">
-        <rect class="bar bar1" x="0" y="0" width="3" height="8" fill="{bar_color}" rx="1" />
-        <rect class="bar bar2" x="5" y="0" width="3" height="12" fill="{bar_color}" rx="1" />
-        <rect class="bar bar3" x="10" y="0" width="3" height="6" fill="{bar_color}" rx="1" />
-        <rect class="bar bar4" x="15" y="0" width="3" height="10" fill="{bar_color}" rx="1" />
-        <rect class="bar bar5" x="20" y="0" width="3" height="5" fill="{bar_color}" rx="1" />
-    </g>
-    """
 
-    status_text = 'Tocando agora' if is_playing else 'Última ouvida'
-
-    # Card menor e mais compacto
     svg = f"""
-<svg width="400" height="90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <rect x="0" y="0" width="400" height="90" rx="10" fill="{bg_color}" stroke="#282828" stroke-width="1"/>
-    {animation_styles}
-    
-    <!-- Album Art (menor) -->
+<svg width="450" height="150" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-        <clipPath id="clip">
-            <rect x="10" y="10" width="70" height="70" rx="5" />
+        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#1ed760;stop-opacity:0.4" />
+            <stop offset="50%" style="stop-color:#1DB954;stop-opacity:0.6" />
+            <stop offset="100%" style="stop-color:#121212;stop-opacity:0.9" />
+        </linearGradient>
+        <clipPath id="clip3">
+            <rect x="15" y="15" width="120" height="120" rx="15" />
         </clipPath>
+        <filter id="blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
+        </filter>
     </defs>
-    <image x="10" y="10" width="70" height="70" xlink:href="{img_src}" clip-path="url(#clip)" />
-
-    <!-- Text Info -->
-    <g transform="translate(95, 32)">
-        <text x="0" y="0" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="15" font-weight="bold" fill="{text_color}">{song[:35] + ('...' if len(song)>35 else '')}</text>
-        <text x="0" y="22" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="13" fill="#B3B3B3">{artist[:40]}</text>
+    {glow}
+    
+    <!-- Background -->
+    <rect width="450" height="150" fill="url(#grad2)" rx="20"/>
+    <rect width="450" height="150" fill="#000000" opacity="0.3" rx="20"/>
+    
+    <!-- Glass effect -->
+    <rect x="10" y="10" width="430" height="130" fill="#FFFFFF" opacity="0.05" rx="15"/>
+    <rect x="10" y="10" width="430" height="130" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.2" rx="15"/>
+    
+    <!-- Album Art with glow -->
+    <g class="{'glow' if is_playing else ''}">
+        <image x="15" y="15" width="120" height="120" xlink:href="{img_src}" clip-path="url(#clip3)" />
+        <rect x="15" y="15" width="120" height="120" rx="15" fill="none" stroke="#1DB954" stroke-width="2" opacity="0.6"/>
     </g>
-
-    <!-- Status & Bars -->
-    <g transform="translate(95, 70)">
-        <text x="0" y="5" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="10" fill="{bar_color}" font-weight="bold">
-            {status_text.upper()}
-        </text>
-    </g>
-    {bars_svg}
+    
+    <!-- Content -->
+    <text x="155" y="50" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="bold" fill="#FFFFFF" 
+          style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
+        {song[:22] + ('...' if len(song)>22 else '')}
+    </text>
+    <text x="155" y="80" font-family="'Segoe UI', Arial, sans-serif" font-size="16" fill="#E0E0E0" 
+          style="text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
+        {artist[:28] + ('...' if len(artist)>28 else '')}
+    </text>
+    
+    <!-- Status pill -->
+    <rect x="155" y="95" width="{"120" if is_playing else "110"}" height="28" fill="#1DB954" rx="14" opacity="0.9"/>
+    <text x="{"215" if is_playing else "210"}" y="113" font-family="'Segoe UI', Arial, sans-serif" 
+          font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">
+        {'🎵 AO VIVO' if is_playing else '⏸️ PAUSADO'}
+    </text>
+    
+    <!-- Spotify branding -->
+    <text x="420" y="135" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#FFFFFF" opacity="0.6" text-anchor="end">
+        Spotify
+    </text>
 </svg>
 """
     return svg.strip()
@@ -150,13 +150,11 @@ def generate_recent_track_card(track, index):
     """Gera um card compacto para cada música recente"""
     artist = track["artists"][0]["name"]
     song = track["name"]
-    image = track["album"]["images"][-1]["url"]  # Menor imagem
+    image = track["album"]["images"][-1]["url"]
     
-    # Escapar caracteres XML
     song = song.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     artist = artist.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     
-    # Base64 da imagem
     try:
         img_content = requests.get(image).content
         img_b64 = base64.b64encode(img_content).decode()
@@ -168,7 +166,6 @@ def generate_recent_track_card(track, index):
 <svg width="190" height="60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <rect x="0" y="0" width="190" height="60" rx="8" fill="#181818" stroke="#282828" stroke-width="1"/>
     
-    <!-- Album Art -->
     <defs>
         <clipPath id="clip{index}">
             <rect x="8" y="8" width="44" height="44" rx="4" />
@@ -176,7 +173,6 @@ def generate_recent_track_card(track, index):
     </defs>
     <image x="8" y="8" width="44" height="44" xlink:href="{img_src}" clip-path="url(#clip{index})" />
 
-    <!-- Text Info -->
     <g transform="translate(60, 22)">
         <text x="0" y="0" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="12" font-weight="bold" fill="#FFFFFF">{song[:18] + ('...' if len(song)>18 else '')}</text>
         <text x="0" y="18" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="10" fill="#B3B3B3">{artist[:20] + ('...' if len(artist)>20 else '')}</text>
@@ -189,28 +185,25 @@ def update_readme(current_track, is_playing, recent_tracks):
     if not current_track:
         return
 
-    # 1. Gerar e salvar SVG principal
+    # Gerar e salvar SVG principal
     svg_content = generate_spotify_card(current_track, is_playing)
     if svg_content:
         with open("spotify_card.svg", "w", encoding="utf-8") as f:
             f.write(svg_content)
 
-    # 2. Gerar SVGs para cada música recente
+    # Gerar SVGs para cada música recente
     recent_html = ""
     if recent_tracks:
         recent_cards = []
         for i, track in enumerate(recent_tracks[:4], 1):
-            # Salvar SVG de cada track
             track_svg = generate_recent_track_card(track, i)
             filename = f"recent_{i}.svg"
             with open(filename, "w", encoding="utf-8") as f:
                 f.write(track_svg)
             
-            # Criar link para o card
             url = track["external_urls"]["spotify"]
             recent_cards.append(f'<a href="{url}"><img src="https://github.com/Clebio2030/Clebio2030/blob/main/{filename}" alt="Track {i}" width="190"></a>')
         
-        # Criar grid 2x2 sem dropdown
         recent_html = f"""
 
 <p align="center"><strong>Outras Recentes</strong></p>
@@ -229,11 +222,11 @@ def update_readme(current_track, is_playing, recent_tracks):
 </div>
 """
 
-    # 3. Atualizar README (sem player embed - GitHub não suporta iframes)
+    # Atualizar README
     new_content = f"""<!-- spotify_readme_start -->
 <div align="center">
   <a href="{current_track['external_urls']['spotify']}">
-    <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="400">
+    <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="450">
   </a>
   {recent_html}
 </div>
@@ -263,7 +256,7 @@ if __name__ == "__main__":
             current_track, is_playing = get_current_track(token)
             recent_tracks = get_recently_played(token, limit=4)
             update_readme(current_track, is_playing, recent_tracks)
-            print("Spotify card atualizado (sem player embed)!")
+            print("Spotify card atualizado com design Glassmorphism!")
         else:
             print("Erro ao obter token de acesso.")
     except Exception as e:
