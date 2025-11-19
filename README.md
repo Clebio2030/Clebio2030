@@ -19,6 +19,24 @@
   <img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&langs_count=7&theme=radical&locale=pt-br&count_private=true&hide_border=true" alt="Linguagens Mais Usadas" />
 </div>
 
+### 📈 Atividade Recente
+
+<div align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Clebio2030&theme=radical&hide_border=true&locale=pt-br" alt="Sequência de Commits" />
+</div>
+
+<div align="center">
+  
+![Commits na última semana](https://img.shields.io/github/commit-activity/w/Clebio2030/Clebio2030?style=for-the-badge&logo=git&logoColor=white&label=Commits%20(7%20dias)&color=1DB954)
+![Commits no último mês](https://img.shields.io/github/commit-activity/m/Clebio2030/Clebio2030?style=for-the-badge&logo=git&logoColor=white&label=Commits%20(30%20dias)&color=E535AB)
+![Último commit](https://img.shields.io/github/last-commit/Clebio2030/Clebio2030?style=for-the-badge&logo=github&logoColor=white&label=Último%20Commit&color=7159c1)
+
+</div>
+
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Clebio2030&theme=react-dark&hide_border=true&area=true&locale=pt" alt="Gráfico de Atividade" />
+</div>
+
 
 ## 💻 Tecnologias e Ferramentas
 
