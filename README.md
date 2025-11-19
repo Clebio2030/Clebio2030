@@ -54,13 +54,12 @@
 <!-- spotify_readme_start -->
 <div align="center">
   <a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
-    <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="100%">
+    <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="400">
   </a>
   
 
-<details>
-<summary>📼 Últimas Ouvidas</summary>
-<br>
+<p align="center"><strong>Outras Recentes</strong></p>
+
 <div align="center">
   <table>
     <tr>
@@ -73,7 +72,6 @@
     </tr>
   </table>
 </div>
-</details>
 
 </div>
 <!-- spotify_readme_end -->
