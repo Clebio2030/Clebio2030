@@ -104,39 +104,40 @@ def generate_spotify_card(track, is_playing):
         """
     
     bars_svg = f"""
-    <g transform="translate(240, 85)">
-        <rect class="bar bar1" x="0" y="0" width="3" height="10" fill="{bar_color}" rx="1" />
-        <rect class="bar bar2" x="6" y="0" width="3" height="15" fill="{bar_color}" rx="1" />
-        <rect class="bar bar3" x="12" y="0" width="3" height="8" fill="{bar_color}" rx="1" />
-        <rect class="bar bar4" x="18" y="0" width="3" height="12" fill="{bar_color}" rx="1" />
-        <rect class="bar bar5" x="24" y="0" width="3" height="6" fill="{bar_color}" rx="1" />
+    <g transform="translate(200, 70)">
+        <rect class="bar bar1" x="0" y="0" width="3" height="8" fill="{bar_color}" rx="1" />
+        <rect class="bar bar2" x="5" y="0" width="3" height="12" fill="{bar_color}" rx="1" />
+        <rect class="bar bar3" x="10" y="0" width="3" height="6" fill="{bar_color}" rx="1" />
+        <rect class="bar bar4" x="15" y="0" width="3" height="10" fill="{bar_color}" rx="1" />
+        <rect class="bar bar5" x="20" y="0" width="3" height="5" fill="{bar_color}" rx="1" />
     </g>
     """
 
     status_text = 'Tocando agora' if is_playing else 'Última ouvida'
 
+    # Card menor e mais compacto
     svg = f"""
-<svg width="400" height="120" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <rect x="0" y="0" width="400" height="120" rx="12" fill="{bg_color}" stroke="#282828" stroke-width="1"/>
+<svg width="400" height="90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <rect x="0" y="0" width="400" height="90" rx="10" fill="{bg_color}" stroke="#282828" stroke-width="1"/>
     {animation_styles}
     
-    <!-- Album Art -->
+    <!-- Album Art (menor) -->
     <defs>
         <clipPath id="clip">
-            <rect x="15" y="15" width="90" height="90" rx="6" />
+            <rect x="10" y="10" width="70" height="70" rx="5" />
         </clipPath>
     </defs>
-    <image x="15" y="15" width="90" height="90" xlink:href="{img_src}" clip-path="url(#clip)" />
+    <image x="10" y="10" width="70" height="70" xlink:href="{img_src}" clip-path="url(#clip)" />
 
     <!-- Text Info -->
-    <g transform="translate(120, 45)">
-        <text x="0" y="0" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="16" font-weight="bold" fill="{text_color}">{song[:30] + ('...' if len(song)>30 else '')}</text>
-        <text x="0" y="25" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14" fill="#B3B3B3">{artist[:35]}</text>
+    <g transform="translate(95, 32)">
+        <text x="0" y="0" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="15" font-weight="bold" fill="{text_color}">{song[:35] + ('...' if len(song)>35 else '')}</text>
+        <text x="0" y="22" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="13" fill="#B3B3B3">{artist[:40]}</text>
     </g>
 
     <!-- Status & Bars -->
-    <g transform="translate(120, 90)">
-        <text x="0" y="5" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="11" fill="{bar_color}" font-weight="bold">
+    <g transform="translate(95, 70)">
+        <text x="0" y="5" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="10" fill="{bar_color}" font-weight="bold">
             {status_text.upper()}
         </text>
     </g>
@@ -209,12 +210,11 @@ def update_readme(current_track, is_playing, recent_tracks):
             url = track["external_urls"]["spotify"]
             recent_cards.append(f'<a href="{url}"><img src="https://github.com/Clebio2030/Clebio2030/blob/main/{filename}" alt="Track {i}" width="190"></a>')
         
-        # Criar grid 2x2
+        # Criar grid 2x2 sem dropdown
         recent_html = f"""
 
-<details>
-<summary>📼 Últimas Ouvidas</summary>
-<br>
+<p align="center"><strong>Outras Recentes</strong></p>
+
 <div align="center">
   <table>
     <tr>
@@ -227,14 +227,13 @@ def update_readme(current_track, is_playing, recent_tracks):
     </tr>
   </table>
 </div>
-</details>
 """
 
     # 3. Atualizar README
     new_content = f"""<!-- spotify_readme_start -->
 <div align="center">
   <a href="{current_track['external_urls']['spotify']}">
-    <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="100%">
+    <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="400">
   </a>
   {recent_html}
 </div>
