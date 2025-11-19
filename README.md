@@ -54,7 +54,7 @@
 <!-- spotify_readme_start -->
 <div align="center">
   <a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
-    <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="100%">
+    <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="400">
   </a>
 </div>
 <!-- spotify_readme_end -->
