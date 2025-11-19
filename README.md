@@ -58,6 +58,14 @@
   </a>
   
 
+<p align="center"><strong>🎵 Player</strong></p>
+
+<div align="center">
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5eTNdkstwKaNahHf41fJ9u?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+  
+
 <p align="center"><strong>Outras Recentes</strong></p>
 
 <div align="center">
