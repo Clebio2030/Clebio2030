@@ -185,6 +185,11 @@ def generate_recent_track_card(track, index):
 """
     return svg.strip()
 
+def extract_track_id(track_url):
+    """Extrai o ID da track do URL do Spotify"""
+    match = re.search(r'track/([a-zA-Z0-9]+)', track_url)
+    return match.group(1) if match else None
+
 def update_readme(current_track, is_playing, recent_tracks):
     if not current_track:
         return
@@ -229,12 +234,26 @@ def update_readme(current_track, is_playing, recent_tracks):
 </div>
 """
 
-    # 3. Atualizar README
+    # 3. Extrair ID da track para embed do player
+    track_id = extract_track_id(current_track['external_urls']['spotify'])
+    player_embed = ""
+    if track_id:
+        player_embed = f"""
+
+<p align="center"><strong>🎵 Player</strong></p>
+
+<div align="center">
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/{track_id}?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+"""
+
+    # 4. Atualizar README
     new_content = f"""<!-- spotify_readme_start -->
 <div align="center">
   <a href="{current_track['external_urls']['spotify']}">
     <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="400">
   </a>
+  {player_embed}
   {recent_html}
 </div>
 <!-- spotify_readme_end -->"""
@@ -263,7 +282,7 @@ if __name__ == "__main__":
             current_track, is_playing = get_current_track(token)
             recent_tracks = get_recently_played(token, limit=4)
             update_readme(current_track, is_playing, recent_tracks)
-            print("Spotify card atualizado com histórico!")
+            print("Spotify card atualizado com player e histórico!")
         else:
             print("Erro ao obter token de acesso.")
     except Exception as e:
