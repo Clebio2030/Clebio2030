@@ -5,4 +5,3 @@ __pycache__/
 .vscode/
 get_spotify_token.py
 update_spotify.py
-generate_private_stats.py
