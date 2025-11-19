@@ -15,7 +15,14 @@
 ## 📊 Estatísticas do GitHub
 
 <div align="center">
-  <img src="https://github.com/Clebio2030/Clebio2030/blob/master/github-metrics.svg" alt="Metrics" width="100%">
+  <a href="https://git.io/streak-stats"><img src="https://streak-stats.demolab.com?user=Clebio2030&theme=dark&locale=pt_BR&mode=weekly" alt="GitHub Streak" /></a>
+</div>
+
+<br>
+
+<div align="center">
+  <img height="180em" src="https://github-readme-stats-two-gamma-34.vercel.app/api?username=Clebio2030&show_icons=true&theme=radical&include_all_commits=true&count_private=true&locale=pt-br"/>
+  <img height="180em" src="https://github-readme-stats-two-gamma-34.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&langs_count=7&theme=radical&locale=pt-br&count_private=true"/>
 </div>
 
 <div align="center">
@@ -49,12 +56,12 @@
 
 <div align="center">
   
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/clebgitiosilva/)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/clebiosilva/)
 [![Instagram](https://img.shields.io/badge/-Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/Clebioz)
 </div>
 
 ## 🔍 Visitantes
 
 <div align="center">
-  <img src="https://komarev.com/ghpvc/?username=Clebio2030&style=flat-square&color=blue" alt="Visitantes" />
+  <img src="https://profile-counter.glitch.me/Clebio2030/count.svg" />
 </div>
