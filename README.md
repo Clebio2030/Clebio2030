@@ -6,7 +6,7 @@
 ![Estrelas](https://img.shields.io/github/stars/Clebio2030?style=social)
 
 
-**Indie Hacker apaixonado por tecnologias e criar pequenas soluções inovadoras.**
+**🛠️ Na missão de descomplicar rotinas através de SaaS inovadores.**
 
 [💼 LinkedIn](https://www.linkedin.com/in/clebiosilva/) | [📧 Email](mailto:clebiodasilva285@gmail.com) 
 
@@ -15,14 +15,7 @@
 ## 📊 Estatísticas do GitHub
 
 <div align="center">
-  <a href="https://git.io/streak-stats"><img src="https://streak-stats.demolab.com?user=Clebio2030&theme=dark&locale=pt_BR&mode=weekly" alt="GitHub Streak" /></a>
-</div>
-
-<br>
-
-<div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Clebio2030&show_icons=true&theme=radical&include_all_commits=true&count_private=true&locale=pt-br"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&langs_count=7&theme=radical&locale=pt-br&count_private=true"/>
+  <img src="github-metrics.svg" alt="Metrics" width="100%">
 </div>
 
 
@@ -59,12 +52,25 @@
 
 <!-- spotify_readme_start -->
 <div align="center">
-  <h3>⏮️ Última ouvida:</h3>
-  <a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
-    <img src="https://i.scdn.co/image/ab67616d0000b273838698485511bd9108fadadc" width="250" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);" alt="Hotter Than Hell">
-  </a>
-  <br/>
-  <p><b>Hotter Than Hell</b> - Dua Lipa</p>
+  <table align="center" style="border: none;">
+    <tr>
+      <td width="120" align="center">
+        <a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
+          <img src="https://i.scdn.co/image/ab67616d0000b273838698485511bd9108fadadc" width="100%" style="border-radius: 12px;" alt="Album Cover">
+        </a>
+      </td>
+      <td style="padding-left: 20px;">
+        <p style="color: #1DB954; font-weight: bold; margin-bottom: 5px;">⏮️ Última ouvida:</p>
+        <p style="font-size: 16px; font-weight: bold; margin: 0;"><a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u" style="text-decoration: none; color: inherit;">Hotter Than Hell</a></p>
+        <p style="font-size: 14px; margin: 0; color: #888;">Dua Lipa</p>
+        <br/>
+        <p style="font-size: 20px; margin: 0;">⏮️ &nbsp; ▶️ &nbsp; ⏭️</p>
+        <p style="font-family: monospace; font-size: 12px; margin: 0; color: #888;">
+          ───⚪──────────
+        </p>
+      </td>
+    </tr>
+  </table>
 </div>
 <!-- spotify_readme_end -->
 
