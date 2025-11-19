@@ -63,6 +63,14 @@
 ## 🎧 Ouvindo no Spotify
 
 <!-- spotify_readme_start -->
+<div align="center">
+  <h3>⏮️ Última ouvida:</h3>
+  <a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
+    <img src="https://i.scdn.co/image/ab67616d0000b273838698485511bd9108fadadc" width="250" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);" alt="Hotter Than Hell">
+  </a>
+  <br/>
+  <p><b>Hotter Than Hell</b> - Dua Lipa</p>
+</div>
 <!-- spotify_readme_end -->
 
 ## 🐍 Minhas Contribuições (Snake Game)
