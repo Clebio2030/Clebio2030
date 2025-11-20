@@ -6,37 +6,27 @@
             .value { font-weight: bold; font-size: 24px; }
             .title { font-weight: bold; font-size: 16px; fill: #1DB954; }
         </style>
-        
-        <!-- Fundo -->
         <rect width="100%" height="100%" fill="#0d1117" rx="10" />
-        
-        <!-- Título -->
         <text x="20" y="30" class="text title">Atividade Privada & Pública</text>
         
-        <!-- Cards -->
         <g transform="translate(20, 50)">
-            <!-- Commits 30 dias -->
             <rect width="240" height="70" fill="#161b22" rx="6" stroke="#30363d" />
             <text x="120" y="25" text-anchor="middle" class="text label">Commits (30 dias)</text>
-            <text x="120" y="55" text-anchor="middle" class="text value" fill="#2f81f7">115</text>
+            <text x="120" y="55" text-anchor="middle" class="text value" fill="#2f81f7">109</text>
         </g>
         
         <g transform="translate(280, 50)">
-            <!-- Commits 7 dias -->
             <rect width="240" height="70" fill="#161b22" rx="6" stroke="#30363d" />
             <text x="120" y="25" text-anchor="middle" class="text label">Commits (7 dias)</text>
-            <text x="120" y="55" text-anchor="middle" class="text value" fill="#1DB954">67</text>
+            <text x="120" y="55" text-anchor="middle" class="text value" fill="#1DB954">61</text>
         </g>
         
         <g transform="translate(540, 50)">
-            <!-- Total Repos -->
             <rect width="240" height="70" fill="#161b22" rx="6" stroke="#30363d" />
             <text x="120" y="25" text-anchor="middle" class="text label">Total Repositórios</text>
             <text x="120" y="55" text-anchor="middle" class="text value" fill="#a371f7">40</text>
         </g>
         
-        <!-- Gráfico -->
-        <rect x="40" y="141.3793103448276" width="20" height="18.620689655172413" fill="#1DB954" rx="2" /><text x="50.0" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">22</text><rect x="64" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="88" y="157.93103448275863" width="20" height="2.0689655172413794" fill="#1DB954" rx="2" /><rect x="112" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="136" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="160" y="160" width="20" height="0" fill="#2b303b" rx="2" /><text x="170.0" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">27</text><rect x="184" y="158" width="20" height="2" fill="#1DB954" rx="2" /><rect x="208" y="150.68965517241378" width="20" height="9.310344827586206" fill="#1DB954" rx="2" /><rect x="232" y="157.93103448275863" width="20" height="2.0689655172413794" fill="#1DB954" rx="2" /><rect x="256" y="152.75862068965517" width="20" height="7.241379310344828" fill="#1DB954" rx="2" /><rect x="280" y="160" width="20" height="0" fill="#2b303b" rx="2" /><text x="290.0" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">01</text><rect x="304" y="157.93103448275863" width="20" height="2.0689655172413794" fill="#1DB954" rx="2" /><rect x="328" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="352" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="376" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="400" y="160" width="20" height="0" fill="#2b303b" rx="2" /><text x="410.0" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">06</text><rect x="424" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="448" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="472" y="157.93103448275863" width="20" height="2.0689655172413794" fill="#1DB954" rx="2" /><rect x="496" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="520" y="156.89655172413794" width="20" height="3.103448275862069" fill="#1DB954" rx="2" /><text x="530.0" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">11</text><rect x="544" y="157.93103448275863" width="20" height="2.0689655172413794" fill="#1DB954" rx="2" /><rect x="568" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="592" y="158" width="20" height="2" fill="#1DB954" rx="2" /><rect x="616" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="640" y="158" width="20" height="2" fill="#1DB954" rx="2" /><text x="650.0" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">16</text><rect x="664" y="158" width="20" height="2" fill="#1DB954" rx="2" /><rect x="688" y="156.89655172413794" width="20" height="3.103448275862069" fill="#1DB954" rx="2" /><rect x="712" y="100.0" width="20" height="60.0" fill="#1DB954" rx="2" /><rect x="736" y="156.89655172413794" width="20" height="3.103448275862069" fill="#1DB954" rx="2" />
-        
+        <rect x="40" y="138.8235294117647" width="20" height="21.176470588235297" fill="#1DB954" rx="2" /><text x="50.0" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">22</text><rect x="64" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="88" y="157.64705882352942" width="20" height="2.3529411764705883" fill="#1DB954" rx="2" /><rect x="112" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="136" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="160" y="160" width="20" height="0" fill="#2b303b" rx="2" /><text x="170.0" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">27</text><rect x="184" y="158" width="20" height="2" fill="#1DB954" rx="2" /><rect x="208" y="149.41176470588235" width="20" height="10.588235294117649" fill="#1DB954" rx="2" /><rect x="232" y="157.64705882352942" width="20" height="2.3529411764705883" fill="#1DB954" rx="2" /><rect x="256" y="151.76470588235293" width="20" height="8.23529411764706" fill="#1DB954" rx="2" /><rect x="280" y="160" width="20" height="0" fill="#2b303b" rx="2" /><text x="290.0" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">01</text><rect x="304" y="157.64705882352942" width="20" height="2.3529411764705883" fill="#1DB954" rx="2" /><rect x="328" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="352" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="376" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="400" y="160" width="20" height="0" fill="#2b303b" rx="2" /><text x="410.0" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">06</text><rect x="424" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="448" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="472" y="157.64705882352942" width="20" height="2.3529411764705883" fill="#1DB954" rx="2" /><rect x="496" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="520" y="156.47058823529412" width="20" height="3.5294117647058822" fill="#1DB954" rx="2" /><text x="530.0" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">11</text><rect x="544" y="157.64705882352942" width="20" height="2.3529411764705883" fill="#1DB954" rx="2" /><rect x="568" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="592" y="158" width="20" height="2" fill="#1DB954" rx="2" /><rect x="616" y="160" width="20" height="0" fill="#2b303b" rx="2" /><rect x="640" y="158" width="20" height="2" fill="#1DB954" rx="2" /><text x="650.0" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">16</text><rect x="664" y="158" width="20" height="2" fill="#1DB954" rx="2" /><rect x="688" y="156.47058823529412" width="20" height="3.5294117647058822" fill="#1DB954" rx="2" /><rect x="712" y="100.0" width="20" height="60.0" fill="#1DB954" rx="2" /><rect x="736" y="155.2941176470588" width="20" height="4.705882352941177" fill="#1DB954" rx="2" />
     </svg>
     
