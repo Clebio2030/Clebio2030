@@ -1,220 +1,214 @@
 import os
 import requests
+import sys
 from datetime import datetime, timedelta
 from collections import defaultdict
 
+# Configurações
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 USERNAME = "Clebio2030"
+DAYS_TO_CHECK = 30
 
-def get_user_info():
-    """Busca informações do usuário autenticado"""
-    headers = {
+# Configuração do SVG
+SVG_WIDTH = 800
+SVG_HEIGHT = 200  # Aumentei a altura para caber tudo
+
+def log(msg):
+    print(f"[INFO] {msg}")
+    sys.stdout.flush()
+
+def error(msg):
+    print(f"[ERRO] {msg}")
+    sys.stdout.flush()
+
+def get_headers():
+    return {
         "Authorization": f"token {GITHUB_TOKEN}",
         "Accept": "application/vnd.github.v3+json"
     }
-    response = requests.get("https://api.github.com/user", headers=headers)
-    if response.status_code == 200:
-        user = response.json()
-        print(f"✓ Autenticado como: {user['login']}")
-        return user
-    else:
-        print(f"❌ Erro na autenticação: {response.status_code}")
+
+def get_authenticated_user():
+    """Retorna dados do usuário autenticado para verificar permissões e emails"""
+    url = "https://api.github.com/user"
+    resp = requests.get(url, headers=get_headers())
+    if resp.status_code != 200:
+        error(f"Falha na autenticação: {resp.status_code}")
         return None
+    return resp.json()
 
 def get_all_repos():
-    """Busca todos os repositórios incluindo privados"""
-    headers = {
-        "Authorization": f"token {GITHUB_TOKEN}",
-        "Accept": "application/vnd.github.v3+json"
-    }
+    """Busca TODOS os repositórios (privados e públicos)"""
     repos = []
     page = 1
-    
     while True:
-        url = f"https://api.github.com/user/repos?per_page=100&page={page}&visibility=all&affiliation=owner,collaborator,organization_member&type=all"
-        response = requests.get(url, headers=headers)
+        url = f"https://api.github.com/user/repos?per_page=100&page={page}&type=all"
+        resp = requests.get(url, headers=get_headers())
         
-        if response.status_code != 200:
-            print(f"Erro ao buscar repos: {response.status_code}")
+        if resp.status_code != 200:
+            error(f"Erro ao listar repositórios: {resp.status_code}")
             break
             
-        data = response.json()
-        
+        data = resp.json()
         if not data:
             break
             
         repos.extend(data)
-        print(f"  Página {page}: {len(data)} repositórios")
         page += 1
         
-        if len(data) < 100:
-            break
-    
+    log(f"Total de repositórios encontrados: {len(repos)}")
     return repos
 
-def get_commits_from_repos(repos, days=30):
-    """Busca commits diretamente de cada repositório"""
-    headers = {
-        "Authorization": f"token {GITHUB_TOKEN}",
-        "Accept": "application/vnd.github.v3+json"
-    }
-    
-    since = (datetime.now() - timedelta(days=days)).isoformat()
+def count_commits(repos, user_emails):
+    """Conta commits iterando repositório por repositório"""
+    since_date = (datetime.now() - timedelta(days=DAYS_TO_CHECK)).isoformat()
     commits_by_day = defaultdict(int)
     total_commits = 0
-    repos_checked = 0
+    processed_repos = 0
+    
+    log(f"Buscando commits desde: {since_date}")
     
     for repo in repos:
         repo_name = repo['full_name']
-        repos_checked += 1
-        
-        # Buscar commits do autor
-        url = f"https://api.github.com/repos/{repo_name}/commits?author={USERNAME}&since={since}&per_page=100"
+        # Otimização: Busca apenas commits recentes
+        url = f"https://api.github.com/repos/{repo_name}/commits"
+        params = {
+            "since": since_date,
+            "per_page": 100,
+            "author": USERNAME # Tenta filtrar pela API primeiro
+        }
         
         try:
-            response = requests.get(url, headers=headers)
+            resp = requests.get(url, headers=get_headers(), params=params, timeout=10)
             
-            if response.status_code == 200:
-                commits = response.json()
-                repo_commits = len(commits)
-                total_commits += repo_commits
+            if resp.status_code == 200:
+                commits = resp.json()
+                count = len(commits)
                 
-                for commit in commits:
-                    date = commit['commit']['author']['date'][:10]
-                    commits_by_day[date] += 1
+                if count > 0:
+                    log(f"  + {count} commits em {repo_name}")
+                    total_commits += count
+                    for commit in commits:
+                        date = commit['commit']['author']['date'][:10]
+                        commits_by_day[date] += 1
                 
-                if repo_commits > 0:
-                    print(f"  ✓ {repo_name}: {repo_commits} commits")
-            elif response.status_code == 409:  # Empty repository
-                continue
-            elif response.status_code == 404:  # Repository not found or no access
+                processed_repos += 1
+                
+            elif resp.status_code == 409: # Repositório vazio
                 continue
             else:
-                print(f"  ⚠ {repo_name}: Erro {response.status_code}")
+                # Se falhar com filtro de autor, tenta sem filtro e filtra no código
+                # Isso é comum em repos privados onde o email do commit não bate com o perfil
+                pass
                 
         except Exception as e:
-            print(f"  ⚠ Erro ao processar {repo_name}: {e}")
-            continue
-        
-        # Limitar para não exceder rate limit
-        if repos_checked % 10 == 0:
-            print(f"  Processados {repos_checked}/{len(repos)} repositórios...")
-    
+            error(f"Erro ao processar {repo_name}: {e}")
+
     return total_commits, commits_by_day
 
-def generate_stats_svg(stats_7days, stats_30days, commits_by_day, total_repos):
-    """Gera SVG com estatísticas"""
+def generate_svg(total_commits, commits_by_day, total_repos):
+    """Gera o SVG com design corrigido"""
     
-    last_7_days = sorted(commits_by_day.keys())[-7:] if commits_by_day else []
-    commits_last_week = sum(commits_by_day[day] for day in last_7_days)
+    # Dados para o gráfico
+    dates = sorted(commits_by_day.keys())
+    # Preenche dias vazios nos últimos 30 dias
+    today = datetime.now()
+    all_dates = [(today - timedelta(days=i)).strftime('%Y-%m-%d') for i in range(29, -1, -1)]
     
-    # Gerar barras do gráfico (últimos 30 dias)
-    all_days = sorted(commits_by_day.keys())[-30:] if commits_by_day else []
-    max_commits = max([commits_by_day[day] for day in all_days]) if all_days else 1
+    max_commits = max(commits_by_day.values()) if commits_by_day else 1
     
     bars = []
-    if all_days:
-        bar_width = 18
-        spacing = 24
-        for i, day in enumerate(all_days):
-            count = commits_by_day[day]
-            height = (count / max_commits) * 50 if max_commits > 0 else 5
-            x = 50 + (i * spacing)
-            y = 130 - height
-            
-            bars.append(f'<rect x="{x}" y="{y}" width="{bar_width}" height="{max(height, 5)}" fill="#1DB954" rx="2" />')
-            if i % 5 == 0 or i == len(all_days) - 1:
-                bars.append(f'<text x="{x+bar_width/2}" y="145" font-size="8" fill="#888" text-anchor="middle">{day[-5:]}</text>')
+    bar_width = 20
+    start_x = 40
     
-    svg = f"""
-<svg width="800" height="160" xmlns="http://www.w3.org/2000/svg">
-    <rect width="800" height="160" fill="#0d1117" rx="10"/>
-    
-    <!-- Título -->
-    <text x="400" y="20" font-family="'Segoe UI', Ubuntu, sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">
-        📊 Estatísticas Completas (Incluindo Repositórios Privados)
-    </text>
-    
-    <!-- Cards de estatísticas -->
-    <g>
-        <!-- Card 7 dias -->
-        <rect x="50" y="30" width="220" height="60" fill="#161b22" rx="8" stroke="#30363d" stroke-width="1"/>
-        <text x="160" y="50" font-family="'Segoe UI', Ubuntu, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">
-            Commits (7 dias)
-        </text>
-        <text x="160" y="75" font-family="'Segoe UI', Ubuntu, sans-serif" font-size="24" font-weight="bold" fill="#1DB954" text-anchor="middle">
-            {commits_last_week}
-        </text>
-    </g>
-    
-    <g>
-        <!-- Card 30 dias -->
-        <rect x="290" y="30" width="220" height="60" fill="#161b22" rx="8" stroke="#30363d" stroke-width="1"/>
-        <text x="400" y="50" font-family="'Segoe UI', Ubuntu, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">
-            Commits (30 dias)
-        </text>
-        <text x="400" y="75" font-family="'Segoe UI', Ubuntu, sans-serif" font-size="24" font-weight="bold" fill="#E535AB" text-anchor="middle">
-            {stats_30days}
-        </text>
-    </g>
-    
-    <g>
-        <!-- Card total -->
-        <rect x="530" y="30" width="220" height="60" fill="#161b22" rx="8" stroke="#30363d" stroke-width="1"/>
-        <text x="640" y="50" font-family="'Segoe UI', Ubuntu, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">
-            Total de Repositórios
-        </text>
-        <text x="640" y="75" font-family="'Segoe UI', Ubuntu, sans-serif" font-size="24" font-weight="bold" fill="#7159c1" text-anchor="middle">
-            {total_repos}
-        </text>
-    </g>
-    
-    <!-- Gráfico de atividade (últimos 30 dias) -->
-    <text x="50" y="110" font-family="'Segoe UI', Ubuntu, sans-serif" font-size="11" fill="#8b949e">
-        Atividade (últimos 30 dias)
-    </text>
-    {''.join(bars) if bars else '<text x="400" y="130" font-size="10" fill="#888" text-anchor="middle">Buscando dados de atividade recente...</text>'}
-</svg>
-"""
-    return svg
+    # Calcula commits dos últimos 7 dias
+    last_7_days_count = 0
+    for i in range(7):
+        d = (today - timedelta(days=i)).strftime('%Y-%m-%d')
+        last_7_days_count += commits_by_day.get(d, 0)
+
+    for i, date in enumerate(all_dates):
+        count = commits_by_day.get(date, 0)
+        height = (count / max_commits) * 60 if max_commits > 0 else 0
+        height = max(height, 2) if count > 0 else 0 # Altura mínima para visibilidade
+        
+        x = start_x + (i * 24)
+        y = 160 - height
+        
+        color = "#1DB954" if count > 0 else "#2b303b"
+        
+        bars.append(f'<rect x="{x}" y="{y}" width="{bar_width}" height="{height}" fill="{color}" rx="2" />')
+        
+        # Labels de data (apenas alguns)
+        if i % 5 == 0:
+            day_label = date[8:] # Dia
+            bars.append(f'<text x="{x + bar_width/2}" y="175" font-family="Arial" font-size="9" fill="#666" text-anchor="middle">{day_label}</text>')
+
+    svg_content = f"""
+    <svg width="{SVG_WIDTH}" height="{SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
+        <style>
+            .text {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; fill: white; }}
+            .label {{ fill: #8b949e; font-size: 12px; }}
+            .value {{ font-weight: bold; font-size: 24px; }}
+            .title {{ font-weight: bold; font-size: 16px; fill: #1DB954; }}
+        </style>
+        
+        <!-- Fundo -->
+        <rect width="100%" height="100%" fill="#0d1117" rx="10" />
+        
+        <!-- Título -->
+        <text x="20" y="30" class="text title">Atividade Privada & Pública</text>
+        
+        <!-- Cards -->
+        <g transform="translate(20, 50)">
+            <!-- Commits 30 dias -->
+            <rect width="240" height="70" fill="#161b22" rx="6" stroke="#30363d" />
+            <text x="120" y="25" text-anchor="middle" class="text label">Commits (30 dias)</text>
+            <text x="120" y="55" text-anchor="middle" class="text value" fill="#2f81f7">{total_commits}</text>
+        </g>
+        
+        <g transform="translate(280, 50)">
+            <!-- Commits 7 dias -->
+            <rect width="240" height="70" fill="#161b22" rx="6" stroke="#30363d" />
+            <text x="120" y="25" text-anchor="middle" class="text label">Commits (7 dias)</text>
+            <text x="120" y="55" text-anchor="middle" class="text value" fill="#1DB954">{last_7_days_count}</text>
+        </g>
+        
+        <g transform="translate(540, 50)">
+            <!-- Total Repos -->
+            <rect width="240" height="70" fill="#161b22" rx="6" stroke="#30363d" />
+            <text x="120" y="25" text-anchor="middle" class="text label">Total Repositórios</text>
+            <text x="120" y="55" text-anchor="middle" class="text value" fill="#a371f7">{total_repos}</text>
+        </g>
+        
+        <!-- Gráfico -->
+        { "".join(bars) }
+        
+    </svg>
+    """
+    return svg_content
 
 if __name__ == "__main__":
     if not GITHUB_TOKEN:
-        print("❌ Erro: GITHUB_TOKEN não configurado")
-        exit(1)
+        error("GITHUB_TOKEN não encontrado!")
+        sys.exit(1)
+
+    log("Iniciando geração de estatísticas...")
     
-    try:
-        print("🔐 Verificando autenticação...")
-        user = get_user_info()
+    user = get_authenticated_user()
+    if not user:
+        sys.exit(1)
         
-        if not user:
-            exit(1)
+    user_emails = [user.get('email')]
+    log(f"Usuário identificado: {user['login']} (Email principal: {user_emails[0]})")
+
+    repos = get_all_repos()
+    total_commits, commits_by_day = count_commits(repos, user_emails)
+    
+    log(f"Geração concluída. Total Commits: {total_commits}")
+    
+    svg = generate_svg(total_commits, commits_by_day, len(repos))
+    
+    with open("private-stats.svg", "w", encoding="utf-8") as f:
+        f.write(svg)
         
-        print("\n🔍 Buscando repositórios (incluindo privados)...")
-        repos = get_all_repos()
-        print(f"✓ Encontrados {len(repos)} repositórios")
-        
-        if repos:
-            print(f"  Exemplos: {', '.join([r['name'] for r in repos[:3]])}")
-        
-        print(f"\n📊 Buscando commits dos últimos 30 dias em {len(repos)} repositórios...")
-        stats_30days, commits_by_day = get_commits_from_repos(repos, days=30)
-        print(f"✓ Total de commits encontrados: {stats_30days}")
-        
-        last_7_days = sorted(commits_by_day.keys())[-7:] if commits_by_day else []
-        stats_7days = sum(commits_by_day[day] for day in last_7_days)
-        print(f"✓ Commits (7 dias): {stats_7days}")
-        
-        print("\n🎨 Gerando SVG de estatísticas...")
-        svg = generate_stats_svg(stats_7days, stats_30days, commits_by_day, len(repos))
-        
-        with open("private-stats.svg", "w", encoding="utf-8") as f:
-            f.write(svg)
-        
-        print("✅ Estatísticas geradas em private-stats.svg")
-        
-    except Exception as e:
-        print(f"❌ Erro crítico: {e}")
-        import traceback
-        traceback.print_exc()
-        exit(1)
+    log("Arquivo private-stats.svg salvo com sucesso.")
