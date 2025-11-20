@@ -167,7 +167,7 @@ def generate_svg(total_commits, commits_by_day, total_repos):
     
     <rect width="100%" height="100%" class="bg" rx="10" />
     
-    <text x="20" y="30" class="text-main" font-size="16">Atividade Recente (Privada & Pública)</text>
+    <text x="20" y="30" class="text-main" font-size="16">Atividade Recente (Privada &amp; Pública)</text>
     
     <!-- Cards -->
     <g transform="translate(20, 50)">
