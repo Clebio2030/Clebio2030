@@ -80,46 +80,56 @@ def run_analysis():
         repo_name = repo['full_name']
         is_private = repo['private']
         
-        # Pega commits recentes
+        # Paginação de commits
         commits_url = f"https://api.github.com/repos/{repo_name}/commits"
-        params = {'since': since_date, 'per_page': 100}
+        repo_count = 0
+        c_page = 1
         
-        try:
-            c_resp = requests.get(commits_url, headers=get_headers(), params=params, timeout=10)
-            
-            if c_resp.status_code == 200:
-                commits = c_resp.json()
-                repo_count = 0
+        while True:
+            params = {'since': since_date, 'per_page': 100, 'page': c_page}
+            try:
+                c_resp = requests.get(commits_url, headers=get_headers(), params=params, timeout=10)
                 
-                for c in commits:
-                    # Filtro simplificado: Tenta bater o login ou nome
-                    author = c.get('author') # Dados do GitHub User
-                    commit_author = c.get('commit', {}).get('author', {}) # Dados do git config
-                    
-                    match = False
-                    # Check 1: Login do GitHub (mais forte)
-                    if author and author.get('login', '').lower() == username.lower():
-                        match = True
-                    # Check 2: Email (se contém o nome do usuário ou noreply)
-                    elif username.lower() in commit_author.get('email', '').lower():
-                        match = True
-                    # Check 3: Nome exato
-                    elif commit_author.get('name', '').lower() == username.lower():
-                        match = True
+                if c_resp.status_code == 200:
+                    commits = c_resp.json()
+                    if not commits:
+                        break # Acabaram os commits
                         
-                    if match:
-                        repo_count += 1
-                        date = commit_author.get('date')[:10]
-                        commits_by_day[date] += 1
-                
-                if repo_count > 0:
-                    total_commits += repo_count
-                    repos_with_activity += 1
-                    privacy_tag = "[PRIVADO]" if is_private else "[PÚBLICO]"
-                    log(f"  Found {repo_count} commits in {repo_name} {privacy_tag}")
+                    for c in commits:
+                        # Filtro simplificado: Tenta bater o login ou nome
+                        author = c.get('author') # Dados do GitHub User
+                        commit_author = c.get('commit', {}).get('author', {}) # Dados do git config
+                        
+                        match = False
+                        # Check 1: Login do GitHub (mais forte)
+                        if author and author.get('login', '').lower() == username.lower():
+                            match = True
+                        # Check 2: Email (se contém o nome do usuário ou noreply)
+                        elif username.lower() in commit_author.get('email', '').lower():
+                            match = True
+                        # Check 3: Nome exato
+                        elif commit_author.get('name', '').lower() == username.lower():
+                            match = True
+                            
+                        if match:
+                            repo_count += 1
+                            date = commit_author.get('date')[:10]
+                            commits_by_day[date] += 1
                     
-        except Exception as e:
-            pass
+                    if len(commits) < 100:
+                        break # Última página
+                    c_page += 1
+                    
+                else:
+                    break
+            except Exception:
+                break
+
+        if repo_count > 0:
+            total_commits += repo_count
+            repos_with_activity += 1
+            privacy_tag = "[PRIVADO]" if is_private else "[PÚBLICO]"
+            log(f"  Found {repo_count} commits in {repo_name} {privacy_tag}")
 
     log(f"RESULTADO FINAL: {total_commits} commits em {repos_with_activity} repositórios.")
     
