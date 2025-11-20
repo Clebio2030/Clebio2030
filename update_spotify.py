@@ -50,7 +50,7 @@ def get_current_track(access_token):
 def get_recently_played(access_token, limit=4):
     try:
         response = requests.get(
-            f"https://api.spotify.com/v1/me/player/recently-played?limit={limit}",
+            "https://api.spotify.com/v1/me/player/recently-played?limit={limit}",
             headers={"Authorization": f"Bearer {access_token}"},
         )
         data = response.json()
@@ -188,7 +188,8 @@ def update_readme(current_track, is_playing, recent_tracks):
     # Gerar e salvar SVG principal
     svg_content = generate_spotify_card(current_track, is_playing)
     if svg_content:
-        with open("spotify_card.svg", "w", encoding="utf-8") as f:
+        # Agora salva em stats/
+        with open("stats/spotify_card.svg", "w", encoding="utf-8") as f:
             f.write(svg_content)
 
     # Gerar SVGs para cada música recente
@@ -198,14 +199,15 @@ def update_readme(current_track, is_playing, recent_tracks):
         for i, track in enumerate(recent_tracks[:4], 1):
             track_svg = generate_recent_track_card(track, i)
             filename = f"recent_{i}.svg"
-            with open(filename, "w", encoding="utf-8") as f:
+            # Agora salva em stats/
+            with open(f"stats/{filename}", "w", encoding="utf-8") as f:
                 f.write(track_svg)
             
             url = track["external_urls"]["spotify"]
-            recent_cards.append(f'<a href="{url}"><img src="https://github.com/Clebio2030/Clebio2030/blob/main/{filename}" alt="Track {i}" width="190"></a>')
+            # Atualizar link para pasta stats
+            recent_cards.append(f'<a href="{url}"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/{filename}" alt="Track {i}" width="190"></a>')
         
         recent_html = f"""
-
 <p align="center"><strong>Outras Recentes</strong></p>
 
 <div align="center">
@@ -226,7 +228,7 @@ def update_readme(current_track, is_playing, recent_tracks):
     new_content = f"""<!-- spotify_readme_start -->
 <div align="center">
   <a href="{current_track['external_urls']['spotify']}">
-    <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="450">
+    <img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/spotify_card.svg" alt="Spotify Status" width="450">
   </a>
   {recent_html}
 </div>

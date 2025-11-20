@@ -21,7 +21,7 @@ jobs:
           config_timezone: America/Sao_Paulo
           config_display: large
           config_output: svg
-          filename: github-metrics.svg
+          filename: stats/github-metrics.svg
           config_twemoji: yes
           config_padding: 0, 8 + 11%
           

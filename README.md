@@ -16,7 +16,12 @@
 
 <div align="center">
   
-![Estatísticas Privadas](https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/private-stats.svg?v=1)
+<img src="https://github-readme-stats.vercel.app/api?username=Clebio2030&show_icons=true&theme=dark&locale=pt-br" alt="Stats" height="150" />
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&theme=dark&locale=pt-br" alt="Langs" height="150" />
+
+<br>
+
+![Estatísticas Privadas](https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/private-stats.svg?v=1)
 
 
 </div>
@@ -55,25 +60,23 @@
 <!-- spotify_readme_start -->
 <div align="center">
   <a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u">
-    <img src="https://github.com/Clebio2030/Clebio2030/blob/main/spotify_card.svg" alt="Spotify Status" width="450">
+    <img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/spotify_card.svg" alt="Spotify Status" width="450">
   </a>
   
-
 <p align="center"><strong>Outras Recentes</strong></p>
 
 <div align="center">
   <table>
     <tr>
-      <td><a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u"><img src="https://github.com/Clebio2030/Clebio2030/blob/main/recent_1.svg" alt="Track 1" width="190"></a></td>
-      <td><a href="https://open.spotify.com/track/1zi7xx7UVEFkmKfv06H8x0"><img src="https://github.com/Clebio2030/Clebio2030/blob/main/recent_2.svg" alt="Track 2" width="190"></a></td>
+      <td><a href="https://open.spotify.com/track/5eTNdkstwKaNahHf41fJ9u"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_1.svg" alt="Track 1" width="190"></a></td>
+      <td><a href="https://open.spotify.com/track/1zi7xx7UVEFkmKfv06H8x0"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_2.svg" alt="Track 2" width="190"></a></td>
     </tr>
     <tr>
-      <td><a href="https://open.spotify.com/track/5GXAXm5YOmYT0kL5jHvYBt"><img src="https://github.com/Clebio2030/Clebio2030/blob/main/recent_3.svg" alt="Track 3" width="190"></a></td>
-      <td><a href="https://open.spotify.com/track/6RUKPb4LETWmmr3iAEQktW"><img src="https://github.com/Clebio2030/Clebio2030/blob/main/recent_4.svg" alt="Track 4" width="190"></a></td>
+      <td><a href="https://open.spotify.com/track/5GXAXm5YOmYT0kL5jHvYBt"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_3.svg" alt="Track 3" width="190"></a></td>
+      <td><a href="https://open.spotify.com/track/6RUKPb4LETWmmr3iAEQktW"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_4.svg" alt="Track 4" width="190"></a></td>
     </tr>
   </table>
 </div>
-
 </div>
 <!-- spotify_readme_end -->
 

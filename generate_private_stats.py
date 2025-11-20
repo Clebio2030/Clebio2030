@@ -192,9 +192,9 @@ def generate_svg(total_commits, commits_by_day, total_repos):
 </svg>
 """
     
-    with open("private-stats.svg", "w", encoding="utf-8") as f:
+    with open("stats/private-stats.svg", "w", encoding="utf-8") as f:
         f.write(svg)
-    log("SVG gerado com sucesso.")
+    log("SVG gerado com sucesso em stats/private-stats.svg.")
 
 if __name__ == "__main__":
     run_analysis()
