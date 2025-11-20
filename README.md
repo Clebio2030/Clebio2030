@@ -16,7 +16,7 @@
 
 <div align="center">
   
-![Estatísticas Privadas](private-stats.svg)
+![Estatísticas Privadas](https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/private-stats.svg?v=1)
 
 
 </div>
