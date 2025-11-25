@@ -1,6 +1,7 @@
 import os
 import requests
 import sys
+import time
 from datetime import datetime, timedelta
 from collections import defaultdict
 
@@ -79,6 +80,9 @@ def run_analysis():
     for repo in repos:
         repo_name = repo['full_name']
         is_private = repo['private']
+        
+        # Pausa para evitar rate limit (Erro 429)
+        time.sleep(0.5)
         
         # Paginação de commits
         commits_url = f"https://api.github.com/repos/{repo_name}/commits"
