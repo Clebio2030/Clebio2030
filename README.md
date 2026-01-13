@@ -59,7 +59,7 @@
 
 <!-- spotify_readme_start -->
 <div align="center">
-  <a href="https://open.spotify.com/track/0DlKyVTNLz0cxop9vgp92I">
+  <a href="https://open.spotify.com/track/4LCwIetGuFpf8Xh4jH2FUz">
     <img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/spotify_card.svg" alt="Spotify Status" width="450">
   </a>
   
