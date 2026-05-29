@@ -15,14 +15,13 @@
 ## 📊 Estatísticas do GitHub
 
 <div align="center">
-  
-<img src="https://github-readme-stats.vercel.app/api?username=Clebio2030&show_icons=true&theme=dark&locale=pt-br" alt="Stats" height="150" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&theme=dark&locale=pt-br" alt="Langs" height="150" />
+
+<img src="https://github-readme-stats.vercel.app/api?username=Clebio2030&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=1f6feb&text_color=c9d1d9" alt="Stats" width="49%" />
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&langs_count=8" alt="Langs" width="49%" />
 
 <br>
 
-![Estatísticas Privadas](https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/private-stats.svg?v=1)
-
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=Clebio2030&theme=tokyonight&hide_border=true&background=0d1117&stroke=1f6feb&ring=58a6ff&fire=ff6e6e&currStreakLabel=58a6ff" alt="Streak" width="60%" />
 
 </div>
 
