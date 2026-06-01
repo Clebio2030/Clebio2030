@@ -26,7 +26,7 @@ jobs:
           config_padding: 0, 8 + 11%
           
           # Idioma português
-          config_locale: pt-br
+          config_locale: pt-BR
           
           # Incluir repositórios privados
           repositories: 300
