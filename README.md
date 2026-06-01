@@ -58,9 +58,10 @@
 
 <!-- spotify_readme_start -->
 <div align="center">
-
-[![spotify-github-profile](https://spotify-github-profile.kittinanx.com/api/view?uid=fhiyn7hyo6rwowirkxmk44st4&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&profanity=true&hide_remaster=true)](https://spotify-github-profile.kittinanx.com/api/view?uid=fhiyn7hyo6rwowirkxmk44st4&redirect=true)
-
+  <a href="https://open.spotify.com/track/7j5IUWdULEj2lFx0NApMyw">
+    <img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/spotify_card.svg" alt="Spotify Status" width="450">
+  </a>
+  
 </div>
 <!-- spotify_readme_end -->
 
