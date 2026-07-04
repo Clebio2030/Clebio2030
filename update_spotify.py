@@ -2,6 +2,7 @@ import os
 import base64
 import requests
 import re
+import sys
 
 # Configurações
 CLIENT_ID = os.environ.get("SPOTIFY_CLIENT_ID")
@@ -16,7 +17,12 @@ def get_access_token():
             data={"grant_type": "refresh_token", "refresh_token": REFRESH_TOKEN},
             headers={"Authorization": f"Basic {auth_header}"},
         )
-        return response.json().get("access_token")
+        response.raise_for_status()
+        token_data = response.json()
+        if "access_token" not in token_data:
+            print(f"Erro na resposta do token: {token_data}")
+            return None
+        return token_data.get("access_token")
     except Exception as e:
         print(f"Erro ao obter token: {e}")
         return None
@@ -33,12 +39,14 @@ def get_current_track(access_token):
                 "https://api.spotify.com/v1/me/player/recently-played?limit=1",
                 headers={"Authorization": f"Bearer {access_token}"},
             )
+            response.raise_for_status()
             data = response.json()
             if "items" in data and len(data["items"]) > 0:
                 track = data["items"][0]["track"]
                 return track, False
             return None, None
 
+        response.raise_for_status()
         data = response.json()
         if "item" in data and data["item"]:
             return data["item"], data["is_playing"]
@@ -50,9 +58,10 @@ def get_current_track(access_token):
 def get_recently_played(access_token, limit=4):
     try:
         response = requests.get(
-            "https://api.spotify.com/v1/me/player/recently-played?limit={limit}",
+            f"https://api.spotify.com/v1/me/player/recently-played?limit={limit}",
             headers={"Authorization": f"Bearer {access_token}"},
         )
+        response.raise_for_status()
         data = response.json()
         if "items" in data:
             return [item["track"] for item in data["items"]]
@@ -66,9 +75,21 @@ def generate_spotify_card(track, is_playing):
     if not track:
         return None
 
-    artist = track["artists"][0]["name"]
+    if "artists" in track and track["artists"]:
+        artist = track["artists"][0]["name"]
+    elif "show" in track:
+        artist = track["show"]["name"]
+    else:
+        artist = "Spotify"
+
     song = track["name"]
-    image = track["album"]["images"][0]["url"]
+    
+    if "album" in track and "images" in track["album"] and track["album"]["images"]:
+        image = track["album"]["images"][0]["url"]
+    elif "images" in track and track["images"]:
+        image = track["images"][0]["url"]
+    else:
+        image = "https://www.spotify.com/favicon.ico"
     
     song = song.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     artist = artist.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
@@ -148,9 +169,21 @@ def generate_spotify_card(track, is_playing):
 
 def generate_recent_track_card(track, index):
     """Gera um card compacto para cada música recente"""
-    artist = track["artists"][0]["name"]
+    if "artists" in track and track["artists"]:
+        artist = track["artists"][0]["name"]
+    elif "show" in track:
+        artist = track["show"]["name"]
+    else:
+        artist = "Spotify"
+
     song = track["name"]
-    image = track["album"]["images"][-1]["url"]
+    
+    if "album" in track and "images" in track["album"] and track["album"]["images"]:
+        image = track["album"]["images"][-1]["url"]
+    elif "images" in track and track["images"]:
+        image = track["images"][-1]["url"]
+    else:
+        image = "https://www.spotify.com/favicon.ico"
     
     song = song.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     artist = artist.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
@@ -250,16 +283,22 @@ def update_readme(current_track, is_playing, recent_tracks):
 if __name__ == "__main__":
     if not CLIENT_ID or not CLIENT_SECRET or not REFRESH_TOKEN:
         print("Erro: Variáveis de ambiente não configuradas.")
-        exit(1)
+        sys.exit(1)
 
     try:
         token = get_access_token()
         if token:
             current_track, is_playing = get_current_track(token)
-            recent_tracks = get_recently_played(token, limit=4)
-            update_readme(current_track, is_playing, recent_tracks)
-            print("Spotify card atualizado com design Glassmorphism!")
+            if current_track:
+                recent_tracks = get_recently_played(token, limit=4)
+                update_readme(current_track, is_playing, recent_tracks)
+                print("Spotify card atualizado com design Glassmorphism!")
+            else:
+                print("Erro: Não foi possível obter nenhuma música (atual ou recente).")
+                sys.exit(1)
         else:
-            print("Erro ao obter token de acesso.")
+            print("Erro: Não foi possível obter o token de acesso.")
+            sys.exit(1)
     except Exception as e:
         print(f"Erro: {e}")
+        sys.exit(1)
