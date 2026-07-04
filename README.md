@@ -15,13 +15,16 @@
 ## 📊 Estatísticas do GitHub
 
 <div align="center">
-
-<img src="stats/github-metrics.svg" alt="GitHub Metrics" width="100%" />
-
-<br>
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=Clebio2030&theme=tokyonight&hide_border=true&background=0d1117&stroke=1f6feb&ring=58a6ff&fire=ff6e6e&currStreakLabel=58a6ff" alt="Streak" width="60%" />
-
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img src="https://github-readme-stats.vercel.app/api?username=Clebio2030&show_icons=true&theme=tokyonight&locale=pt-br&hide_border=true" alt="Estatísticas do GitHub" height="180px" />
+  </a>
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Clebio2030&layout=compact&theme=tokyonight&locale=pt-br&hide_border=true" alt="Linguagens Mais Usadas" height="180px" />
+  </a>
+  <br><br>
+  <a href="https://github.com/danielcranney/readme-scribe">
+    <img src="https://streak-stats.demolab.com/?user=Clebio2030&theme=tokyonight&locale=pt_BR&hide_border=true" alt="Streak de Commits" width="60%" />
+  </a>
 </div>
 
 ## 💻 Tecnologias e Ferramentas
