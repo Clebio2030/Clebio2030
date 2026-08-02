@@ -16,7 +16,7 @@
     <g transform="translate(20, 50)">
         <rect width="240" height="70" class="card" rx="6" />
         <text x="120" y="25" text-anchor="middle" class="text-sub">Total Commits (30d)</text>
-        <text x="120" y="55" text-anchor="middle" class="num" fill="#2f81f7">106</text>
+        <text x="120" y="55" text-anchor="middle" class="num" fill="#2f81f7">103</text>
     </g>
     
     <g transform="translate(280, 50)">
