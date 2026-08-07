@@ -17,7 +17,9 @@ def get_access_token():
             data={"grant_type": "refresh_token", "refresh_token": REFRESH_TOKEN},
             headers={"Authorization": f"Basic {auth_header}"},
         )
-        response.raise_for_status()
+        if response.status_code != 200:
+            print(f"Erro na resposta do token do Spotify (Status {response.status_code}): {response.text}")
+            return None
         token_data = response.json()
         if "access_token" not in token_data:
             print(f"Erro na resposta do token: {token_data}")
@@ -34,22 +36,25 @@ def get_current_track(access_token):
             headers={"Authorization": f"Bearer {access_token}"},
         )
         
-        if response.status_code == 204 or not response.text:
-            response = requests.get(
-                "https://api.spotify.com/v1/me/player/recently-played?limit=1",
-                headers={"Authorization": f"Bearer {access_token}"},
-            )
-            response.raise_for_status()
+        if response.status_code == 200 and response.text:
+            try:
+                data = response.json()
+                if data and data.get("item"):
+                    return data["item"], data.get("is_playing", False)
+            except Exception as e:
+                print(f"Aviso ao ler resposta de música atual: {e}")
+
+        # Fallback: se não estiver tocando nada ou item for null, busca a última música tocada
+        response = requests.get(
+            "https://api.spotify.com/v1/me/player/recently-played?limit=1",
+            headers={"Authorization": f"Bearer {access_token}"},
+        )
+        if response.status_code == 200 and response.text:
             data = response.json()
             if "items" in data and len(data["items"]) > 0:
                 track = data["items"][0]["track"]
                 return track, False
-            return None, None
 
-        response.raise_for_status()
-        data = response.json()
-        if "item" in data and data["item"]:
-            return data["item"], data["is_playing"]
         return None, None
     except Exception as e:
         print(f"Erro ao obter música: {e}")
@@ -282,7 +287,7 @@ def update_readme(current_track, is_playing, recent_tracks):
 
 if __name__ == "__main__":
     if not CLIENT_ID or not CLIENT_SECRET or not REFRESH_TOKEN:
-        print("Erro: Variáveis de ambiente não configuradas.")
+        print("Erro: Variáveis de ambiente (SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN) não configuradas.")
         sys.exit(1)
 
     try:
@@ -294,10 +299,10 @@ if __name__ == "__main__":
                 update_readme(current_track, is_playing, recent_tracks)
                 print("Spotify card atualizado com design Glassmorphism!")
             else:
-                print("Erro: Não foi possível obter nenhuma música (atual ou recente).")
-                sys.exit(1)
+                print("Aviso: Não foi possível obter nenhuma música (atual ou recente). Mantendo README sem alterações.")
+                sys.exit(0)
         else:
-            print("Erro: Não foi possível obter o token de acesso.")
+            print("Erro: Não foi possível obter o token de acesso. Verifique seus secrets no GitHub.")
             sys.exit(1)
     except Exception as e:
         print(f"Erro: {e}")
