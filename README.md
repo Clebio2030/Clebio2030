@@ -51,10 +51,10 @@
   <table>
     <tr>
       <td><a href="https://open.spotify.com/track/1YrY0vjHWp672gt0crtj5A"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_1.svg" alt="Track 1" width="190"></a></td>
-      <td><a href="https://open.spotify.com/track/05oC2UvKDcx0cY2wg9gzKC"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_2.svg" alt="Track 2" width="190"></a></td>
+      <td></td>
     </tr>
     <tr>
-      <td><a href="https://open.spotify.com/track/7fYRg3CEbk6rNCuzNzMT06"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_3.svg" alt="Track 3" width="190"></a></td>
+      <td></td>
       <td></td>
     </tr>
   </table>
