@@ -55,7 +55,7 @@
     </tr>
     <tr>
       <td><a href="https://open.spotify.com/track/7fYRg3CEbk6rNCuzNzMT06"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_3.svg" alt="Track 3" width="190"></a></td>
-      <td><a href="https://open.spotify.com/track/2ekn2ttSfGqwhhate0LSR0"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_4.svg" alt="Track 4" width="190"></a></td>
+      <td></td>
     </tr>
   </table>
 </div>
