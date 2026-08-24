@@ -51,11 +51,11 @@
   <table>
     <tr>
       <td><a href="https://open.spotify.com/track/42VUCXerQ5qTr4Qp6PhKo4"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_1.svg" alt="Track 1" width="190"></a></td>
-      <td><a href="https://open.spotify.com/track/3ouNEk0tv5TTi8VWMe1xbX"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_2.svg" alt="Track 2" width="190"></a></td>
+      <td></td>
     </tr>
     <tr>
-      <td><a href="https://open.spotify.com/track/3yWuTOYDztXjZxdE2cIRUa"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_3.svg" alt="Track 3" width="190"></a></td>
-      <td><a href="https://open.spotify.com/track/3xkHsmpQCBMytMJNiDf3Ii"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_4.svg" alt="Track 4" width="190"></a></td>
+      <td></td>
+      <td></td>
     </tr>
   </table>
 </div>
