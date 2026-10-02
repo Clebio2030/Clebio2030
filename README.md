@@ -41,7 +41,7 @@
 
 <!-- spotify_readme_start -->
 <div align="center">
-  <a href="https://open.spotify.com/track/0o1oaR7KTMoh8yobEPDIkf">
+  <a href="https://open.spotify.com/track/0mO0wfJw0tymJEtEfxqmRQ">
     <img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/spotify_card.svg" alt="Spotify Status" width="450">
   </a>
   
@@ -50,12 +50,12 @@
 <div align="center">
   <table>
     <tr>
-      <td><a href="https://open.spotify.com/track/0o1oaR7KTMoh8yobEPDIkf"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_1.svg" alt="Track 1" width="190"></a></td>
-      <td><a href="https://open.spotify.com/track/2u9FntJ6uZotnwah3wxypj"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_2.svg" alt="Track 2" width="190"></a></td>
+      <td><a href="https://open.spotify.com/track/0mO0wfJw0tymJEtEfxqmRQ"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_1.svg" alt="Track 1" width="190"></a></td>
+      <td><a href="https://open.spotify.com/track/6SKwQghsR8AISlxhcwyA9R"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_2.svg" alt="Track 2" width="190"></a></td>
     </tr>
     <tr>
-      <td><a href="https://open.spotify.com/track/0RkvMBjXDjlTIABycmrKRf"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_3.svg" alt="Track 3" width="190"></a></td>
-      <td><a href="https://open.spotify.com/track/2d3SAsrYt6x0DNc3LQpPvR"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_4.svg" alt="Track 4" width="190"></a></td>
+      <td><a href="https://open.spotify.com/track/1fB731gQhPoZoPABrbj1dm"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_3.svg" alt="Track 3" width="190"></a></td>
+      <td><a href="https://open.spotify.com/track/3diDFBSeV9LWOtFPfApWQ5"><img src="https://raw.githubusercontent.com/Clebio2030/Clebio2030/main/stats/recent_4.svg" alt="Track 4" width="190"></a></td>
     </tr>
   </table>
 </div>
